@@ -12,7 +12,7 @@ public class SelectFace : MonoBehaviour
     void Start()
     {
         readCube = FindObjectOfType<ReadCube>();
-        cubeState = FindObjectOfType<cubeState>();
+        cubeState = FindObjectOfType<CubeState>();
     }
 
     // Update is called once per frame
@@ -29,22 +29,7 @@ public class SelectFace : MonoBehaviour
                 GameObject face = hit.collider.gameObject;
                 List<List<GameObject>> cubeSides = new List<List<GameObject>>()
                 {
-                    cubeState.up;
-                    cubeState.down;
-                    cubeState.left;
-                    cubeState.front;
-                    cubeState.back;
-                };
-                
-                foreach (List<GameObject> cubeSide in cubeSides)
-                {
-                    if (cubeSide.Contains(SelectFace))
-                    {
-                        //make children of that side so it can rotate from middle
-                        cubeState.PickUp(cubeSide);
-                    }
-                }
-            }
+                    cubeState.up,                    cubeState.down,                    cubeState.left,                    cubeState.front,                    cubeState.back                };                foreach (List<GameObject> cubeSide in cubeSides)                {                    if (cubeSide.Contains(SelectFace))                    {                     //make children of that side so it can rotate from middle                        cubeState.PickUp(cubeSide);                    }                }            }
         }
     }
 }

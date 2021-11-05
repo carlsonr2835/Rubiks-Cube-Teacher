@@ -1,28 +1,2 @@
-# Starting compiling UnityEngine.TestRunner.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-15142826035ae4bcaa23db58d3f3bbbe
-# Starting compiling UnityEngine.UI.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-9a83c3f0a2bcd4d8fa237e8f039b2dfa
-# Starting compiling UnityEditor.TestRunner.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-b0bd2223976514a4f90a85bdbb3fbf47
-# Starting compiling UnityEditor.UI.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-76e03187b39b04fa2a7d412884b3fcd7
-# Starting compiling Unity.VSCode.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-fe4c243efc6524c969dcfffa554f15bb
-# Starting compiling Unity.VisualStudio.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-f67cc60b56fe44abaa876e7984fb98c5
-# Starting compiling Unity.Timeline.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-1018d5706cbb340a9827cdb799c9cf98
-# Starting compiling Unity.TextMeshPro.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-f90430f2e26b242dc9553895f3f49845
-# Starting compiling Unity.CollabProxy.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-d466197ac7b0240c98e56847584b9f30
-# Starting compiling Unity.PlasticSCM.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-070f9409bea1f4a0a88ade333cc494ee
-# Starting compiling Unity.Timeline.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-07519a51af05343308db5fd885daaa4b
-# Starting compiling Unity.Rider.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-2c5643e9c7c5b42068af0c22a230a5ac
-# Starting compiling Unity.TextMeshPro.Editor.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-5ee061f89fba543fc9ec76d9fe01836c
 # Starting compiling Assembly-CSharp.dll
-/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-f1c4ff4cb8bfc4935b3509a94135884a
+/Applications/Unity/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-8eb6a6a1075ea4c73ad279250b4b876f

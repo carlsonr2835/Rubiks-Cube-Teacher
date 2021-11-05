@@ -48,7 +48,7 @@ public class PivotRotation : MonoBehaviour
         //resets rotation
         rotation = Vector3.zero;
 
-        Vector3 mouseOffset = (Imput.mousePosition = mouseRef);
+        Vector3 mouseOffset = (Input.mousePosition = mouseRef);
 
         if (side == cubeState.up)
         {
@@ -97,7 +97,7 @@ public class PivotRotation : MonoBehaviour
         vec.y = Mathf.Round(vec.y / 90) * 90;
         vec.z = Mathf.Round(vec.z / 90) * 90;
 
-        tarbzgetQuaternion.eulerAngles = vec;
+        targetQuaternion.eulerAngles = vec;
         autoRotating = true;
     }
 
