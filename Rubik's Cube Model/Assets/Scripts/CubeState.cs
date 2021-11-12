@@ -41,7 +41,7 @@ public class CubeState : MonoBehaviour
         {
             if (litteCube != littleCubes[4])
             {
-                littleCube.tranform.parent.transform.parent = pivot;
+                littleCube.transform.parent.transform.parent = pivot;
             }
         }
     }
