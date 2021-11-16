@@ -48,7 +48,7 @@ public class PivotRotation : MonoBehaviour
         //resets rotation
         rotation = Vector3.zero;
 
-        Vector3 mouseOffset = (Input.mousePosition = mouseRef);
+        Vector3 mouseOffset = (Input.mousePosition - mouseRef);
 
         if (side == cubeState.up)
         {
@@ -77,7 +77,7 @@ public class PivotRotation : MonoBehaviour
         //rotate
         transform.Rotate(rotation, Space.Self);
         //store mouse pos
-        mouseRef = Input.mousePositon;
+        mouseRef = Input.mousePosition;
     }
 
     public void Rotate(List<GameObject> side)
@@ -105,14 +105,14 @@ public class PivotRotation : MonoBehaviour
     {
         dragging = false;
         var step = speed * Time.deltaTime;
-        transform.localRotation = targetQuaternion.RotateTowards(transform.localRotation, targetQuaternion, step);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetQuaternion, step);
 
         //if within one degree, set to target angle and stop rot
-        if (targetQuaternion.Angle(transform.localRotation, targetQuaternion) <= 1)
+        if (Quaternion.Angle(transform.localRotation, targetQuaternion) <= 1)
         {
             transform.localRotation = targetQuaternion;
             //unparent little cubes
-            cubeState.PutDown(activeSide, transformParent);
+            cubeState.PutDown(activeSide, transform.parent);
             readCube.ReadState();
 
             autoRotating = false;

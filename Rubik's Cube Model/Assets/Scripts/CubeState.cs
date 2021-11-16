@@ -39,7 +39,7 @@ public class CubeState : MonoBehaviour
     {
         foreach (GameObject littleCube in littleCubes)
         {
-            if (litteCube != littleCubes[4])
+            if (littleCube != littleCubes[4])
             {
                 littleCube.transform.parent.transform.parent = pivot;
             }
