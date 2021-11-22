@@ -43,7 +43,7 @@ public class PivotRotation : MonoBehaviour
         }
     }
 
-    private void SpinSide(List<GameObject> side)
+    public void SpinSide(List<GameObject> side)
     {
         //resets rotation
         rotation = Vector3.zero;

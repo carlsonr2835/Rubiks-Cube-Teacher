@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIInputWindow : MonoBehaviour
 {
     private string input;
-    RotateBigCube rotateBigCube;    private PivotRotation pivotRotation;    // Start is called before the first frame update    void Start()
+    RotateBigCube rotateBigCube;    PivotRotation pivotRotation;    CubeState cubeState;    ReadCube readCube;    // Start is called before the first frame update    void Start()
     {        pivotRotation = FindObjectOfType<PivotRotation>();    }
 
     // Update is called once per frame
@@ -15,9 +15,9 @@ public class UIInputWindow : MonoBehaviour
     public void ReadStringInput(string s)
     {
         input = s;
-        rotateBigCube = GameObject.Find("CubeHolder").GetComponent<RotateBigCube>();        //RotateBigCube rotate = GetComponent<RotateBigCube>();        //interpreting input        //single layer turns        if (input == "U")        {
+        rotateBigCube = GameObject.Find("CubeHolder").GetComponent<RotateBigCube>();        readCube.ReadState();        List<GameObject> side = new List<GameObject>()        {            cubeState.up,            cubeState.down,            cubeState.right,            cubeState.left,            cubeState.back,            cubeState.front        };                //interpreting input        //single layer turns        if (input == "U")        {
             Debug.Log("Turn up clockwise");
-            //pivotRotation.SpinSide();
+            pivotRotation.SpinSide(cubeState.up);
         }
         else if (input == "U'")        {
             Debug.Log("Turn up counterclockwise");
