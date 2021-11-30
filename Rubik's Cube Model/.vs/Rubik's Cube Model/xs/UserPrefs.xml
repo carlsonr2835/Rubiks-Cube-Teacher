@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIInputWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RotateBigCube.cs">
     <Files>
       <File FileName="Assets/Scripts/CubeState.cs" Line="42" Column="46" />
       <File FileName="Assets/Scripts/CubeMap.cs" />
-      <File FileName="Assets/Scripts/UIInputWindow.cs" Line="34" Column="28" />
+      <File FileName="Assets/Scripts/UIInputWindow.cs" />
       <File FileName="Assets/Scripts/PivotRotation.cs" />
-      <File FileName="Assets/Scripts/RotateBigCube.cs" />
+      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="34" Column="27" />
       <File FileName="Assets/Scripts/SelectFace.cs" />
       <File FileName="Assets/Scripts/ReadCube.cs" />
     </Files>
@@ -16,7 +16,7 @@
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="UIInputWindow.cs" selected="True" />
+                  <Node name="RotateBigCube.cs" selected="True" />
                 </Node>
               </Node>
             </Node>

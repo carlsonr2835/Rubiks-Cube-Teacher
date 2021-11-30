@@ -1077,7 +1077,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UL
+      value: WG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -1269,7 +1269,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: F
+      value: Front
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -1863,7 +1863,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: D
+      value: Down
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -2295,7 +2295,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UFL
+      value: WRG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -2716,7 +2716,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: U
+      value: Up
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -2965,7 +2965,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: FR
+      value: RB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -3114,7 +3114,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: LD
+      value: YG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -3180,33 +3180,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cube: {fileID: 0}
-  BD: {fileID: 0}
-  LBD: {fileID: 0}
-  RBD: {fileID: 0}
-  D: {fileID: 0}
-  LD: {fileID: 0}
-  RD: {fileID: 0}
-  FD: {fileID: 0}
-  FLD: {fileID: 0}
-  FRD: {fileID: 0}
-  B: {fileID: 0}
-  LB: {fileID: 0}
+  YO: {fileID: 0}
+  YOG: {fileID: 0}
+  YOB: {fileID: 0}
+  Down: {fileID: 0}
+  YG: {fileID: 0}
+  YB: {fileID: 0}
+  YR: {fileID: 0}
+  YRG: {fileID: 0}
+  YRB: {fileID: 0}
+  Back: {fileID: 0}
+  OG: {fileID: 0}
+  OB: {fileID: 0}
+  Right: {fileID: 0}
+  Left: {fileID: 0}
+  Middle: {fileID: 0}
   RB: {fileID: 0}
-  R: {fileID: 0}
-  L: {fileID: 0}
-  M: {fileID: 0}
-  FR: {fileID: 0}
-  FL: {fileID: 0}
-  F: {fileID: 0}
-  U: {fileID: 817431719}
-  UB: {fileID: 1863986783}
-  UBL: {fileID: 352976883}
-  UBR: {fileID: 1872713593}
-  UR: {fileID: 1843140456}
-  UL: {fileID: 1597498540}
-  UFR: {fileID: 219876297}
-  UFL: {fileID: 1706200368}
-  UF: {fileID: 2031153873}
+  RG: {fileID: 0}
+  Front: {fileID: 0}
+  Up: {fileID: 0}
+  WO: {fileID: 0}
+  WOG: {fileID: 0}
+  WOB: {fileID: 0}
+  WB: {fileID: 0}
+  WG: {fileID: 0}
+  WRB: {fileID: 0}
+  WRG: {fileID: 0}
+  WR: {fileID: 0}
 --- !u!114 &817431723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3303,7 +3303,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UR
+      value: WB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -3360,7 +3360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: FL
+      value: RG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -3417,7 +3417,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: LB
+      value: OG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -3474,7 +3474,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: B
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -3993,7 +3993,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UBR
+      value: WOB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -4182,7 +4182,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UF
+      value: WR
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -5426,7 +5426,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: LBD
+      value: YOG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468141, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_ReceiveShadows
@@ -5566,7 +5566,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: RD
+      value: YB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -5666,7 +5666,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: FD
+      value: YR
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -5798,7 +5798,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: M
+      value: Middle
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_IsActive
@@ -6049,7 +6049,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UB
+      value: WO
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -6302,33 +6302,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cube: {fileID: 1645988874}
-  BD: {fileID: 1618711655}
-  LBD: {fileID: 1310045948}
-  RBD: {fileID: 1799262610}
-  D: {fileID: 1288513009}
-  LD: {fileID: 1443609930}
-  RD: {fileID: 1024876345}
-  FD: {fileID: 462968784}
-  FLD: {fileID: 1644534429}
-  FRD: {fileID: 83014054}
-  B: {fileID: 805943365}
-  LB: {fileID: 1971829748}
-  RB: {fileID: 676186094}
-  R: {fileID: 238478714}
-  L: {fileID: 2094736692}
-  M: {fileID: 354147428}
-  FR: {fileID: 187187943}
-  FL: {fileID: 947074023}
-  F: {fileID: 311204438}
-  U: {fileID: 817431719}
-  UB: {fileID: 1863986783}
-  UBL: {fileID: 352976883}
-  UBR: {fileID: 1872713593}
-  UR: {fileID: 1843140456}
-  UL: {fileID: 1597498540}
-  UFR: {fileID: 219876297}
-  UFL: {fileID: 1706200368}
-  UF: {fileID: 2031153873}
+  YO: {fileID: 1618711655}
+  YOG: {fileID: 1310045948}
+  YOB: {fileID: 1799262610}
+  Down: {fileID: 1288513009}
+  YG: {fileID: 1443609930}
+  YB: {fileID: 1024876345}
+  YR: {fileID: 462968784}
+  YRG: {fileID: 1644534429}
+  YRB: {fileID: 83014054}
+  Back: {fileID: 805943365}
+  OG: {fileID: 1971829748}
+  OB: {fileID: 676186094}
+  Right: {fileID: 238478714}
+  Left: {fileID: 2094736692}
+  Middle: {fileID: 354147428}
+  RB: {fileID: 187187943}
+  RG: {fileID: 947074023}
+  Front: {fileID: 311204438}
+  Up: {fileID: 817431719}
+  WO: {fileID: 1863986783}
+  WOG: {fileID: 352976883}
+  WOB: {fileID: 1872713593}
+  WB: {fileID: 1843140456}
+  WG: {fileID: 1597498540}
+  WRB: {fileID: 219876297}
+  WRG: {fileID: 1706200368}
+  WR: {fileID: 2031153873}
 --- !u!1 &1656930971
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,7 +6413,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UFR
+      value: WRB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -6470,7 +6470,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: UBL
+      value: WOG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -6927,7 +6927,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: L
+      value: Left
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -7278,7 +7278,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: FLD
+      value: YRG
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -7565,7 +7565,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: RB
+      value: OB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -7702,7 +7702,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: RBD
+      value: YOB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -7883,7 +7883,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: R
+      value: Right
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -8042,7 +8042,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: FRD
+      value: YRB
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_RootOrder
@@ -8161,7 +8161,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_Name
-      value: BD
+      value: YO
       objectReference: {fileID: 0}
     - target: {fileID: 8667567600152468139, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
       propertyPath: m_IsActive
