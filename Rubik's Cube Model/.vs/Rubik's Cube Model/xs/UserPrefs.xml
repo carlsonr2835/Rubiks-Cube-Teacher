@@ -5,7 +5,7 @@
       <File FileName="Assets/Scripts/CubeMap.cs" />
       <File FileName="Assets/Scripts/UIInputWindow.cs" />
       <File FileName="Assets/Scripts/PivotRotation.cs" />
-      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="34" Column="27" />
+      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="56" Column="32" />
       <File FileName="Assets/Scripts/SelectFace.cs" />
       <File FileName="Assets/Scripts/ReadCube.cs" />
     </Files>

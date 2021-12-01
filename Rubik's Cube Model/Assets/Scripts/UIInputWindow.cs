@@ -17,27 +17,27 @@ public class UIInputWindow : MonoBehaviour
         input = s;
         rotateBigCube = GameObject.Find("CubeHolder").GetComponent<RotateBigCube>();        //readCube.ReadState();        /*List<GameObject> side = new List<GameObject>()        {            cubeState.up,            cubeState.down,            cubeState.right,            cubeState.left,            cubeState.back,            cubeState.front        };*/                //interpreting input        //single layer turns        if (input == "U")        {
             Debug.Log("Turn up clockwise");
-            rotateBigCube.UClock();
+            rotateBigCube.U(0, 90, 0);
         }
         else if (input == "U'")        {
             Debug.Log("Turn up counterclockwise");
-            rotateBigCube.UCounter();
+            rotateBigCube.U(0, -90, 0);
         }
         else if (input == "D")        {
             Debug.Log("Turn down clockwise");
-            rotateBigCube.DClock();
+            rotateBigCube.D(0, -90, 0);
         }
         else if (input == "D'")        {
             Debug.Log("Turn down counterclockwise");
-            rotateBigCube.DCounter();
+            rotateBigCube.D(0, 90, 0);
         }
         else if (input == "B")        {
             Debug.Log("Turn back clockwise");
-            rotateBigCube.BClock();
+            rotateBigCube.B(90, 0, 0);
         }
         else if (input == "B'")        {
             Debug.Log("Turn back counterclockwise");
-            rotateBigCube.BCounter();
+            rotateBigCube.B(-90, 0, 0);
         }
         else if (input == "F")        {
             Debug.Log("Turn front clockwise");
