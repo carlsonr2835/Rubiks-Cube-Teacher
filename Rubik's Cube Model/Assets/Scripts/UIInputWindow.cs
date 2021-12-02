@@ -39,33 +39,7 @@ public class UIInputWindow : MonoBehaviour
             Debug.Log("Turn back counterclockwise");
             rotateBigCube.B(-90, 0, 0);
         }
-        else if (input == "F")        {
-            Debug.Log("Turn front clockwise");
-            rotateBigCube.FClock();
-        }
-        else if (input == "F'")        {
-            Debug.Log("Turn front counterclockwise");
-            rotateBigCube.FCounter();
-        }
-        else if (input == "L")        {
-            Debug.Log("Turn left clockwise");
-            rotateBigCube.LClock();
-        }
-        else if (input == "L'")        {
-            Debug.Log("Turn left counterclockwise");
-            rotateBigCube.LCounter();
-        }
-        else if (input == "R")        {
-            Debug.Log("Turn right clockwise");
-            rotateBigCube.RClock();
-        }
-        else if (input == "R'")        {
-            Debug.Log("Turn right counterclockwise");
-            rotateBigCube.RCounter();
-        }
-
-        //double layer turns
-        else if (input == "u")        {
+        else if (input == "F")        {            Debug.Log("Turn front clockwise");            rotateBigCube.F(-90, 0, 0);        }        else if (input == "F'")        {            Debug.Log("Turn front counterclockwise");            rotateBigCube.F(90, 0, 0);        }        else if (input == "L")        {            Debug.Log("Turn left clockwise");            rotateBigCube.L(0, 0, 90);        }        else if (input == "L'")        {            Debug.Log("Turn left counterclockwise");            rotateBigCube.L(0, 0, -90);        }        else if (input == "R")        {            Debug.Log("Turn right clockwise");            rotateBigCube.R(0, 0, -90);        }        else if (input == "R'")        {            Debug.Log("Turn right counterclockwise");            rotateBigCube.R(0, 0, 90);        }        //double layer turns        else if (input == "u")        {
             Debug.Log("Turn 2 up clockwise");
             rotateBigCube.uClock();
         }
@@ -115,57 +89,25 @@ public class UIInputWindow : MonoBehaviour
         }
 
         //middle layer turns
-        else if (input == "M")        {
-            Debug.Log("Turn middle clockwise");
-            rotateBigCube.MClock();
-        }
-        else if (input == "M'")        {
-            Debug.Log("Turn middle counterclockwise");
-            rotateBigCube.MCounter();
-        }
-        else if (input == "E")        {
-            Debug.Log("Turn equator clockwise");
-            rotateBigCube.EClock();
-        }
-        else if (input == "E'")        {
-            Debug.Log("Turn equator counterclockwise");
-            rotateBigCube.ECounter();
-        }
         else if (input == "S")        {
-            Debug.Log("Turn side clockwise");
-            rotateBigCube.SClock();
+            Debug.Log("Turn middle clockwise");
+            rotateBigCube.S(-90, 0, 0);
         }
         else if (input == "S'")        {
+            Debug.Log("Turn middle counterclockwise");
+            rotateBigCube.S(90, 0, 0);
+        }
+        else if (input == "E")        {            Debug.Log("Turn equator clockwise");            rotateBigCube.E(0, 90, 0);        }        else if (input == "E'")        {            Debug.Log("Turn equator counterclockwise");            rotateBigCube.E(0, -90, 0);        }        else if (input == "M")        {
+            Debug.Log("Turn side clockwise");
+            rotateBigCube.M(0, 0, 90);
+        }
+        else if (input == "M'")        {
             Debug.Log("Turn side counterclockwise");
-            rotateBigCube.SCounter();
+            rotateBigCube.M(0, 0, -90);
         }
 
         //rotations
-        else if (input == "X")        {
-            Debug.Log("Turn cube clockwise on x axis");
-            rotateBigCube.XClock();        }
-        else if (input == "X'")        {
-            Debug.Log("Turn cube counterclockwise on x axis");
-            rotateBigCube.XCounter();
-        }
-        else if (input == "Y")        {
-            Debug.Log("Turn cube clockwise on y axis");
-            rotateBigCube.YClock();
-        }
-        else if (input == "Y'")        {
-            Debug.Log("Turn cube counterclockwise on y axis");
-            rotateBigCube.YCounter();
-        }
-        else if (input == "Z")        {
-            Debug.Log("Turn cube clockwise on z axis");
-            rotateBigCube.ZClock();
-        }
-        else if (input == "Z'")        {
-            Debug.Log("Turn cube counterclockwise on z axis");
-            rotateBigCube.ZCounter();
-        }
-
-        else        {
+        else if (input == "X")        {            Debug.Log("Turn cube clockwise on x axis");            rotateBigCube.fullRotation(90, 0, 0);        }        else if (input == "X'")        {            Debug.Log("Turn cube counterclockwise on x axis");            rotateBigCube.fullRotation(-90, 0, 0);        }        else if (input == "Y")        {            Debug.Log("Turn cube clockwise on y axis");            rotateBigCube.fullRotation(0, 90, 0);        }        else if (input == "Y'")        {            Debug.Log("Turn cube counterclockwise on y axis");            rotateBigCube.fullRotation(0, -90, 0);        }        else if (input == "Z")        {            Debug.Log("Turn cube clockwise on z axis");            rotateBigCube.fullRotation(0, 0, 90);        }        else if (input == "Z'")        {            Debug.Log("Turn cube counterclockwise on z axis");            rotateBigCube.fullRotation(0, 0, -90);        }        else        {
             Debug.Log("Not a valid move");
         }
     }
