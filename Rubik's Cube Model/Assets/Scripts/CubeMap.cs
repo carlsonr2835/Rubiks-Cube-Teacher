@@ -37,7 +37,6 @@ public class CubeMap : MonoBehaviour
     void UpdateMap(List<GameObject> face, Transform side)
     {
         int i = 0;
-        float f = .05f;
 
         //make random numbers between 0 and 1.0 for rgb. change random each time from for each
         //foreach (Transform map in side)
