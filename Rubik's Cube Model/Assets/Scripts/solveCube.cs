@@ -34,7 +34,9 @@ public class solveCube : MonoBehaviour
     public GameObject WRG;
     public GameObject WR;
     public List<List<List<bool>>> position = new List<List<List<bool>>>();
+    public List<List<List<bool>>> orientation = new List<List<List<bool>>>();
     public List<List<List<GameObject>>> pieces = new List<List<List<GameObject>>>();
+    RotateBigCube rotateBigCube;
 
     // Start is called before the first frame update
     void Start()
@@ -66,8 +68,9 @@ public class solveCube : MonoBehaviour
         pieces[2][1][2] = RB;
         pieces[0][2][2] = WRG;
         pieces[1][2][2] = WR;
-        pieces[2][2][2] = WRB;        for (int x = 0; x < 3; x++)        {            List<List<bool>> twoDim = new List<List<bool>>();            for (int y = 0; y < 3; y++)            {                List<bool> oneDim = new List<bool>();                for (int z = 0; z < 3; z++)                {                    oneDim.Add(false);                }                twoDim.Add(oneDim);            }            position.Add(twoDim);        }
-        searching(WRB);
+        pieces[2][2][2] = WRB;        for (int x = 0; x < 3; x++)        {            List<List<bool>> twoDim = new List<List<bool>>();            for (int y = 0; y < 3; y++)            {                List<bool> oneDim = new List<bool>();                for (int z = 0; z < 3; z++)                {                    oneDim.Add(false);                }                twoDim.Add(oneDim);            }            position.Add(twoDim);            orientation.Add(twoDim);        }
+
+        rotateBigCube = GameObject.Find("CubeHolder").GetComponent<RotateBigCube>();
     }
 
     // Update is called once per frame
@@ -82,5 +85,5 @@ public class solveCube : MonoBehaviour
         int z = 0;
         while (true)
         {            Debug.Log("Index: " + x + "," + y + "," + z);            if (pieces[x][y][z] == piece)            {                Debug.Log("Object found!");                objectIndex.Add(x);                objectIndex.Add(y);                objectIndex.Add(z);                break;            }            else            {                if(x >= 2)                {                    x = 0;                    y++;                    if (y > 2)                    {                        y = 0;                        z++;                        if(z > 2)                        {                            Debug.Log("Fully searched!");                            break;                        }                    }                }                else                {                    x++;                }            }                    }        return objectIndex;    }
-    void whiteCross()    {        //first check if it is solved        List<int> objectIndex = new List<int>();        objectIndex = searching(WB);        if(objectIndex[0] == 2 && objectIndex[1] == 2 && objectIndex[2] == 1)        {            position[2][2][1] = true;            //correct position is not a thing yet        }    }
+    void whiteCross()    {        //first check if it is solved        List<int> objectIndex = new List<int>();        for(int i = 0; i < 4; i++)        {            if (i == 0)            {                objectIndex = searching(WB);                if (objectIndex[0] == 2 && objectIndex[1] == 2 && objectIndex[2] == 1)                {                    position[2][2][1] = true;                    //check if orientation is correct using coordinates                    //if up is greater y value than left                    if (Up.WB.position.y > WB.left.position.y)                    {                        orientation[2][2][1] = true;                    }                    else                    {                        rotateBigCube.U(0, -90, 0);                        rotateBigCube.B(-90, 0, 0);                        rotateBigCube.R(0, 0, 90);                        rotateBigCube.U(0, 90, 0);                    }                }                else                {                    //position correctly                }            }            else if (i == 1)            {                objectIndex = searching(WR);            }            else if (i == 2)            {                objectIndex = searching(WG);            }            else if (i == 3)            {                objectIndex = searching(WO);            }        }    }
 }
