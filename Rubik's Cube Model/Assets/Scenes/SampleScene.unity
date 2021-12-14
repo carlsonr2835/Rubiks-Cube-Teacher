@@ -6268,6 +6268,7 @@ GameObject:
   - component: {fileID: 1645988875}
   - component: {fileID: 1645988876}
   - component: {fileID: 1645988877}
+  - component: {fileID: 1645988878}
   m_Layer: 0
   m_Name: CubeHolder
   m_TagString: Untagged
@@ -6370,6 +6371,18 @@ MonoBehaviour:
   WRB: {fileID: 219876297}
   WRG: {fileID: 1706200368}
   WR: {fileID: 2031153873}
+--- !u!114 &1645988878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645988874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3164ee231f804bd4bd691e5b0793c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1656930971
 GameObject:
   m_ObjectHideFlags: 0
