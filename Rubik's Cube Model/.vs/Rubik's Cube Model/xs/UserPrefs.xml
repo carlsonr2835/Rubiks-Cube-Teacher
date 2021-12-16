@@ -4,7 +4,7 @@
       <File FileName="Assets/Scripts/CubeState.cs" Line="42" Column="46" />
       <File FileName="Assets/Scripts/CubeMap.cs" />
       <File FileName="Assets/Scripts/UIInputWindow.cs" />
-      <File FileName="Assets/Scripts/solveCube.cs" Line="169" Column="1" />
+      <File FileName="Assets/Scripts/solveCube.cs" Line="283" Column="34" />
       <File FileName="Assets/Scripts/RotateBigCube.cs" />
       <File FileName="Assets/Scripts/PivotRotation.cs" />
       <File FileName="Assets/Scripts/SelectFace.cs" />
@@ -20,7 +20,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="06547c19-0468-407a-81c1-ce7800bbe202" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="95ae7771-4daa-4062-82cb-8894f53a041f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
