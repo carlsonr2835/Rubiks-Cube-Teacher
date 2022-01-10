@@ -209,6 +209,13 @@ public class solveCube : MonoBehaviour
     {
         //first check if it is solved
         List<int> objectIndex = new List<int>();
+
+        //CENTER PIECE
+        if (Up.transform.position.y < Down.transform.position.y) //down is up and up is down        {            //rotate twice on the z axis            rotateBigCube.fullRotation(0, 0, 180);        }
+        else if (Up.transform.position.y == Down.transform.position.y) //middle layer        {            //rotate once on the z axis (positively)?            rotateBigCube.fullRotation(0, 0, 90);        }
+
+        if (Front.transform.position.z < Back.transform.position.z) //ront is back and back is front        {            //rotate twice on the y axis            rotateBigCube.fullRotation(0, 180, 0);        }
+        else if (Front.transform.position.z == Back.transform.position.z)        {            if (Left.transform.position.z > Right.transform.position.z) //green is in the front            {                //rotate once (positively?) on the y axis                rotateBigCube.fullRotation(0, 90, 0);            }            else //blue is in the front            {                //rotate once the other way on the y axis                rotateBigCube.fullRotation(0, -90, 0);            }        }
         //WB PIECE
         objectIndex = searching(WB, pieces);
         if (objectIndex[0] == 2 && objectIndex[1] == 2 && objectIndex[2] == 1)
@@ -308,7 +315,7 @@ public class solveCube : MonoBehaviour
             {
                 if (objectIndex[2] == 2)
                 {
-                    if (WB_B.transform.position.z < WB_W.transform.position.z) //if the position is correct
+                    if (WB_B.transform.position.z < WB_W.transform.position.z) //if the position is correct (adj orange)
                     {
                         Debug.Log("The WB piece is correctly oriented and in the second layer and adjecant with the blue face and the red face");
                         //R
@@ -327,7 +334,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[2] == 0)
                 {
-                    if (WB_B.transform.position.z > WB_W.transform.position.z) //if the position is correct
+                    if (WB_B.transform.position.z < WB_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WB piece is correctly oriented and in the second layer and adjecant with the blue face and the orange face");
                         //R'
@@ -336,10 +343,10 @@ public class solveCube : MonoBehaviour
                     else
                     {
                         Debug.Log("The WB piece is incorrectly oriented and in the second layer and adjecant with the blue face and the orange face");
-                        //B', D', D, R, R
+                        //B', D', B, R, R
                         pieces = rotateBigCube.B(-90, 0, 0);
                         pieces = rotateBigCube.D(0, 90, 0);
-                        pieces = rotateBigCube.D(0, -90, 0);
+                        pieces = rotateBigCube.B(90, 0, 0);
                         pieces = rotateBigCube.R(0, 0, -90);
                         pieces = rotateBigCube.R(0, 0, -90);
                     }
@@ -349,7 +356,7 @@ public class solveCube : MonoBehaviour
             {
                 if (objectIndex[2] == 2)
                 {
-                    if (WB_B.transform.position.z < WB_W.transform.position.z) //if the position is correct
+                    if (WB_B.transform.position.z > WB_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WB piece is correctly oriented and in the second layer and adjecant with the green face and the red face");
                         //L, D, L', D, R, R <--this works but switching from inserting the edge piece and moving the piece at 0, 2, 1 back up might be confusing
@@ -572,7 +579,7 @@ public class solveCube : MonoBehaviour
             {
                 if (objectIndex[2] == 2)
                 {
-                    if (WG_G.transform.position.z < WG_W.transform.position.z) //if the position is correct
+                    if (WG_G.transform.position.z > WG_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WG piece is correctly oriented in the second layer adjacent to the green face and along the red face");
                         //L'
@@ -854,7 +861,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WR_R.transform.position.x > WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face");
                         //F
@@ -1097,7 +1104,7 @@ public class solveCube : MonoBehaviour
             {
                 if (objectIndex[0] == 2)
                 {
-                    if (WO_O.transform.position.x < WO_W.transform.position.x) //if the position is correct
+                    if (WO_O.transform.position.x > WO_W.transform.position.x) //if the position is correct
                     {
                         Debug.Log("The WO piece is correctly oriented on the second layer and adjacent to the orange face along the blue face");
                         //B
@@ -1116,7 +1123,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WO_O.transform.position.x > WO_W.transform.position.z) //if the position is correct
+                    if (WO_O.transform.position.x < WO_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WO piece is correctly oriented on the second layer and adjacent to the orange face along the green face");
                         //B'
