@@ -152,7 +152,9 @@ public class solveCube : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {    }
+    {
+
+    }
     public void scramble()
     {
         rotateBigCube.U(0, -90, 0);
@@ -174,7 +176,7 @@ public class solveCube : MonoBehaviour
             //Debug.Log("Index: " + x + "," + y + "," + z);
             if (pieces[x][y][z] == piece)
             {
-                Debug.Log("Object: " + piece + "found at: " + x + ", " + y + ", " + z);
+                //Debug.Log("Object: " + piece + "found at: " + x + ", " + y + ", " + z);
                 objectIndex.Add(x);
                 objectIndex.Add(y);
                 objectIndex.Add(z);
@@ -201,7 +203,9 @@ public class solveCube : MonoBehaviour
                 {
                     x++;
                 }
-            }        }
+            }
+
+        }
 
         return objectIndex;
     }
@@ -211,11 +215,35 @@ public class solveCube : MonoBehaviour
         List<int> objectIndex = new List<int>();
 
         //CENTER PIECE
-        if (Up.transform.position.y < Down.transform.position.y) //down is up and up is down        {            //rotate twice on the z axis            rotateBigCube.fullRotation(0, 0, 180);        }
-        else if (Up.transform.position.y == Down.transform.position.y) //middle layer        {            //rotate once on the z axis (positively)?            rotateBigCube.fullRotation(0, 0, 90);        }
+        /*if (Up.transform.position.y < Down.transform.position.y) //down is up and up is down
+        {
+            //rotate twice on the z axis
+            rotateBigCube.fullRotation(0, 0, 180);
+        }
+        else if (Up.transform.position.y == Down.transform.position.y) //middle layer
+        {
+            //rotate once on the z axis (positively)?
+            rotateBigCube.fullRotation(0, 0, 90);
+        }
 
-        if (Front.transform.position.z < Back.transform.position.z) //ront is back and back is front        {            //rotate twice on the y axis            rotateBigCube.fullRotation(0, 180, 0);        }
-        else if (Front.transform.position.z == Back.transform.position.z)        {            if (Left.transform.position.z > Right.transform.position.z) //green is in the front            {                //rotate once (positively?) on the y axis                rotateBigCube.fullRotation(0, 90, 0);            }            else //blue is in the front            {                //rotate once the other way on the y axis                rotateBigCube.fullRotation(0, -90, 0);            }        }
+        if (Front.transform.position.z < Back.transform.position.z) //ront is back and back is front
+        {
+            //rotate twice on the y axis
+            rotateBigCube.fullRotation(0, 180, 0);
+        }
+        else if (Front.transform.position.z == Back.transform.position.z)
+        {
+            if (Left.transform.position.z > Right.transform.position.z) //green is in the front
+            {
+                //rotate once (positively?) on the y axis
+                rotateBigCube.fullRotation(0, 90, 0);
+            }
+            else //blue is in the front
+            {
+                //rotate once the other way on the y axis
+                rotateBigCube.fullRotation(0, -90, 0);
+            }
+        }*/
         //WB PIECE
         objectIndex = searching(WB, pieces);
         if (objectIndex[0] == 2 && objectIndex[1] == 2 && objectIndex[2] == 1)
@@ -1123,7 +1151,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WO_O.transform.position.x < WO_W.transform.position.z) //if the position is correct
+                    if (WO_O.transform.position.x > WO_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WO piece is correctly oriented on the second layer and adjacent to the orange face along the green face");
                         //B'
@@ -1132,9 +1160,9 @@ public class solveCube : MonoBehaviour
                     else
                     {
                         Debug.Log("The WO piece is incorrectly oriented on the second layer and adjacent to the orange face along the green face");
-                        //L', B', L, B, B
+                        //L', D', L, B, B
                         pieces = rotateBigCube.L(0, 0, -90);
-                        pieces = rotateBigCube.B(-90, 0, 0);
+                        pieces = rotateBigCube.D(0, 90, 0);
                         pieces = rotateBigCube.L(0, 0, 90);
                         pieces = rotateBigCube.B(90, 0, 0);
                         pieces = rotateBigCube.B(90, 0, 0);
@@ -1169,7 +1197,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WO_O.transform.position.x > WO_W.transform.position.x) //if the position is correct
+                    if (WO_O.transform.position.x < WO_W.transform.position.x) //if the position is correct
                     {
                         Debug.Log("The WO piece is correctly oriented on the second layer and adjacent to the red face along the green face");
                         //L', L', B', L', L'
@@ -1254,7 +1282,7 @@ public class solveCube : MonoBehaviour
                 {
                     Debug.Log("The WO piece is incorrectly oriented on the bottom layer adjacent to the red face");
                     //D', L, B', L'
-                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                     pieces = rotateBigCube.L(0, 0, 90);
                     pieces = rotateBigCube.B(-90, 0, 0);
                     pieces = rotateBigCube.L(0, 0, -90);
@@ -1270,6 +1298,1230 @@ public class solveCube : MonoBehaviour
                 }
             }
         }
+        return pieces;
+    }
+    public List<List<List<GameObject>>> whiteCorners(List<List<List<GameObject>>> pieces)
+    {
+        //first check if it is solved
+        List<int> objectIndex = new List<int>();
+
+        //WRB
+        objectIndex = searching(WRB, pieces);
+        //if it's in the top
+        if (objectIndex[1] == 2)
+        {
+            if (objectIndex[0] == 2 && objectIndex[2] == 2) //correct position
+            {
+                if (WRB_W.transform.position.y > WRB_R.transform.position.y) //correct orientation
+                {
+                    Debug.Log("The WRB corner is correct");
+                }
+                else if (WRB_R.transform.position.y > WRB_B.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRB corner is correctly positioned but incorrectly oriented (red facing up)");
+                    //R', D', R, D, D, F, D', F'
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else //the blue side is facing up
+                {
+                    Debug.Log("The WRB corner is correctly positioned but incorrectly oriented (blue facing up)");
+                    //R', D, R, D', R', D, R
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //the piece is in the top but in the blue orange corner
+            {
+                if (WRB_W.transform.position.y > WRB_R.transform.position.y) //white facing up //untested but probably right
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WBO (white facing up)");
+                    //B', D', B, D', R', D, R
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+                else if (WRB_R.transform.position.y > WRB_B.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WBO (red facing up)");
+                    //B', D', B, D, F, D', F'
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else //the blue side is facing up //untested but probably right
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WBO (blue facing up)");
+                    //B', D, B, D', D', R', D, R
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //the piece is in the top but in the red green corner
+            {
+                if (WRB_W.transform.position.y > WRB_R.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WRG (white facing up)");
+                    //L, D, L', D, F, D', F'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else if (WRB_R.transform.position.y > WRB_B.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WRG (red facing up)");
+                    //L, D', L', D, D, F, D', F'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else //the blue side is facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WRG (blue facing up)");
+                    //L, D, L, D', R', D, R
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //the piece is in the top but in the green orange corner
+            {
+                if (WRB_W.transform.position.y > WRB_R.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WGO (white facing up)");
+                    //B, D, B', D, D, F, D', F'
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else if (WRB_R.transform.position.y > WRB_B.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WGO (red facing up)");
+                    //B, D', B', D', F, D', F'
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else //the blue side is facing up
+                {
+                    Debug.Log("The WRB corner is incorrectly positioned at WGO (blue facing up)");
+                    //B, D, B', R', D, R
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+            }
+        }
+        //bottom layer
+        else if (objectIndex[1] == 0)
+        {
+            if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
+            {
+                if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YBR corner (white facing down)");
+                    //R', D', D', R, D, D, F, D', F'
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else if (WRB_R.transform.position.y < WRB_W.transform.position.y) //red down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YBR corner (red facing down)");
+                    //D', R', D, R
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+                else if (WRB_B.transform.position.y < WRB_W.transform.position.y) //blue down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YBR corner (blue facing down)");
+                    //D, F, D', F'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //blue orange
+            {
+                if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YBO corner (white facing down)");
+                    //D', R', D', D', R, D, D, F, D', F'
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else if (WRB_R.transform.position.y < WRB_W.transform.position.y) //red down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YBO corner (red facing down)");
+                    //D', D', R', D, R
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+                else if (WRB_B.transform.position.y < WRB_W.transform.position.y) //blue down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YBO corner (blue facing down)");
+                    //F, D', F'
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //red green
+            {
+                if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YRG corner (white facing down)");
+                    //D, R', D', D', R, D, D, F, D', F'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else if (WRB_R.transform.position.y < WRB_W.transform.position.y) //red down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YRG corner (red facing down)");
+                    //R', D, R
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+                else if (WRB_B.transform.position.y < WRB_W.transform.position.y) //blue down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YRG corner (blue facing down)");
+                    //D, D, F, D', F'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //green orange
+            {
+                if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YGO corner (white facing down)");
+                    //D, D, R', D', D', R, D, D, F, D', F'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+                else if (WRB_R.transform.position.y < WRB_W.transform.position.y) //red down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YGO corner (red facing down)");
+                    //D, R', D, R
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                }
+                else if (WRB_B.transform.position.y < WRB_W.transform.position.y) //blue down
+                {
+                    Debug.Log("The WRB corner is in the bottom layer YGO corner (blue facing down)");
+                    //D', F, D', F'
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                }
+            }
+        }
+        //WOB
+        objectIndex = searching(WOB, pieces);
+        //if it's in the top
+        if (objectIndex[1] == 2)
+        {
+            if (objectIndex[0] == 2 && objectIndex[2] == 0) //correct position
+            {
+                if (WOB_W.transform.position.y > WOB_B.transform.position.y) //correct orientation
+                {
+                    Debug.Log("The WOB corner is correct");
+                }
+                else if (WOB_B.transform.position.y > WOB_W.transform.position.y) //the blue side is facing up
+                {
+                    Debug.Log("The WOB corner is correctly positioned but incorrectly oriented (blue facing up)");
+                    //R, D', R', D, R, D', R'
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else //the orange side is facing up
+                {
+                    Debug.Log("The WOB corner is correctly positioned but incorrectly oriented (orange facing up)");
+                    //B', D, B, D', B', D, B
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //the piece is in the top but in the red green corner
+            {
+                if (WOB_W.transform.position.y > WOB_B.transform.position.y) //white facing up //untested but probably right
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WRG (white facing up)");
+                    //L, D, L', D, D, R, D', R'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else if (WOB_B.transform.position.y > WOB_O.transform.position.y) //the blue side is facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WRG (blue facing up)");
+                    //L, D', L', D', R, D', R', 
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else //the orange side is facing up //untested but probably right
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WRG (orange facing up)");
+                    //L, D, L', B', D, B
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) //the piece is in the top but in the red blue corner
+            {
+                if (WOB_W.transform.position.y > WOB_B.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WRB (white facing up)");
+                    //R', D', R, D, B', D, B
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+                else if (WOB_B.transform.position.y > WOB_O.transform.position.y) //the blue side is facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WRB (blue facing up)");
+                    //R', D', R, D', R, D', R'
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else //the green side is facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WRB (orange facing up)");
+                    //R', D, R, B', D, B
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //the piece is in the top but in the green orange corner
+            {
+                if (WOB_W.transform.position.y > WOB_B.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WGO (white facing up)");
+                    //L, D, L', D, D, R, D', R'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else if (WOB_B.transform.position.y > WOB_O.transform.position.y) //the blue side is facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WGO (blue facing up)");
+                    //L, D', L', D', R, D', R'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else //the orange side is facing up
+                {
+                    Debug.Log("The WOB corner is incorrectly positioned at WGO (orange facing up)");
+                    //L, D, L', B', D, B
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+            }
+        }
+        //bottom layer
+        else if (objectIndex[1] == 0)
+        {
+            if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
+            {
+                if (WOB_W.transform.position.y < WOB_B.transform.position.y) //white down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YBR corner (white facing down)");
+                    //D, B', D', D', B, D, D, R, D', R'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else if (WOB_B.transform.position.y < WOB_O.transform.position.y) //blue down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YBR corner (blue facing down)");
+                    //B', D, B
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+                else if (WOB_O.transform.position.y < WOB_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YBR corner (orange facing down)");
+                    //D, D, R, D', R'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //blue orange
+            {
+                if (WOB_W.transform.position.y < WOB_B.transform.position.y) //white down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YBO corner (white facing down)");
+                    //B', D', D', B, D, D, R, D', R'
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else if (WOB_B.transform.position.y < WOB_O.transform.position.y) //blue down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YBO corner (blue facing down)");
+                    //D', B', D, B
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+                else if (WOB_O.transform.position.y < WOB_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YBO corner (orange facing down)");
+                    //D, R, D', R'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //red green
+            {
+                if (WOB_W.transform.position.y < WOB_B.transform.position.y) //white down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YRG corner (white facing down)");
+                    //D, D, B', D', D', B, D, D, R, D', R'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else if (WOB_B.transform.position.y < WOB_O.transform.position.y) //blue down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YRG corner (blue facing down)");
+                    //D, B', D, B
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+                else if (WOB_O.transform.position.y < WOB_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YRG corner (orange facing down)");
+                    //D', R, D', R'
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //green orange
+            {
+                if (WOB_W.transform.position.y < WOB_B.transform.position.y) //white down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YGO corner (white facing down)");
+                    //D', R, D, D, R', D', D', B', D, B
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+                else if (WOB_B.transform.position.y < WOB_O.transform.position.y) //blue down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YGO corner (blue facing down)");
+                    //D', D', B', D, B
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                }
+                else if (WOB_O.transform.position.y < WOB_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOB corner is in the bottom layer YGO corner (orange facing down)");
+                    //R, D', R'
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+            }
+        }
+        //WOG
+        objectIndex = searching(WOG, pieces);
+        //if it's in the top
+        if (objectIndex[1] == 2)
+        {
+            if (objectIndex[0] == 0 && objectIndex[2] == 0) //correct position
+            {
+                if (WOG_W.transform.position.y > WOG_G.transform.position.y) //correct orientation
+                {
+                    Debug.Log("The WOG corner is correct");
+                }
+                else if (WOG_G.transform.position.y > WOG_O.transform.position.y) //the green side is facing up
+                {
+                    Debug.Log("The WOG corner is correctly positioned but incorrectly oriented (green facing up)");
+                    //L', D, L, D', L', D, L
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else //the orange side is facing up
+                {
+                    Debug.Log("The WOG corner is correctly positioned but incorrectly oriented (orange facing up)");
+                    //L', D', L, D, D, B, D', B'
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //the piece is in the top but in the blue orange corner
+            {
+                if (WOG_W.transform.position.y > WOG_G.transform.position.y) //white facing up //untested but probably right
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WBO (white facing up)");
+                    //R, D, D, R', B, D', B'
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_G.transform.position.y > WOG_O.transform.position.y) //the green side is facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WBO (green facing up)");
+                    //R, L', D, L, R'
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
+                else //the orange side is facing up //untested but probably right
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WBO (orange facing up)");
+                    //R, D', R', D, D, B, D', B'
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) //the piece is in the top but in the red blue corner
+            {
+                if (WOG_W.transform.position.y > WOG_G.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WRB (white facing up)");
+                    //R', D', D', R, D', L', D, L
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else if (WOG_G.transform.position.y > WOG_O.transform.position.y) //the green side is facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WRB (green facing up)");
+                    //R', D, R, D, L', D, L
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else //the orange side is facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WRB (orange facing up)");
+                    //R', D', R, B, D', B'
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //the piece is in the top but in the red green corner
+            {
+                if (WRG_W.transform.position.y > WRG_R.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WRG (white facing up)");
+                    //L, D, L', D', B, D', B'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_G.transform.position.y > WOG_O.transform.position.y) //the green side is facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WRG (green facing up)");
+                    //L, D, L', D, L', D, L
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else //the orange side is facing up
+                {
+                    Debug.Log("The WOG corner is incorrectly positioned at WRG (orange facing up)");
+                    //L, D', L', B, D', B'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+            }
+        }
+        //bottom layer
+        else if (objectIndex[1] == 0)
+        {
+            if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
+            {
+                if (WOG_W.transform.position.y < WOG_G.transform.position.y) //white down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YBR corner (white facing down)");
+                    //D', D', B, D, D, B', D', D', L', D, L 
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else if (WOG_G.transform.position.y < WOG_O.transform.position.y) //green down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YBR corner (green facing down)");
+                    //D, B, D', B'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_O.transform.position.y < WOG_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YBR corner (orange facing down)");
+                    //D, L', D, L
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //blue orange
+            {
+                if (WOG_W.transform.position.y < WOG_G.transform.position.y) //white down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YBO corner (white facing down)");
+                    //D, L', D', D', L, D, D, B, D', B'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_G.transform.position.y < WOG_O.transform.position.y) //green down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YBO corner (green facing down)");
+                    //D, D, B, D', B'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_O.transform.position.y < WOG_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YBO corner (orange facing down)");
+                    //L', D, L
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //red green
+            {
+                if (WOG_W.transform.position.y < WOG_G.transform.position.y) //white down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YRG corner (white facing down)");
+                    //D', L', D, L, D', B, D', B'
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+
+                }
+                else if (WOG_G.transform.position.y < WOG_O.transform.position.y) //green down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YRG corner (green facing down)");
+                    //B, D', B'
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_O.transform.position.y < WOG_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YRG corner (orange facing down)");
+                    //D', D', L', D, L
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //green orange
+            {
+                if (WOG_W.transform.position.y < WOG_G.transform.position.y) //white down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YGO corner (white facing down)");
+                    //B, D, D, B', D', D', L', D, L
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else if (WOG_G.transform.position.y < WOG_O.transform.position.y) //green down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YGO corner (green facing down)");
+                    //D, B, D', B'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else if (WOG_O.transform.position.y < WOG_W.transform.position.y) //orange down
+                {
+                    Debug.Log("The WOG corner is in the bottom layer YGO corner (orange facing down)");
+                    //D', L', D, L
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+            }
+        }
+        //WRG
+        objectIndex = searching(WRG, pieces);
+        //if it's in the top
+        if (objectIndex[1] == 2)
+        {
+            if (objectIndex[0] == 0 && objectIndex[2] == 2) //correct position
+            {
+                if (WRG_W.transform.position.y > WRG_R.transform.position.y) //correct orientation
+                {
+                    Debug.Log("The WRG corner is correct");
+                }
+                else if (WRG_R.transform.position.y > WRG_G.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRG corner is correctly positioned but incorrectly oriented (red facing up)");
+                    //F', D, F, D', F', D, F
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else //the green side is facing up
+                {
+                    Debug.Log("The WRG corner is correctly positioned but incorrectly oriented (green facing up)");
+                    //L, D', L', D, L, D', L'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //the piece is in the top but in the blue orange corner
+            {
+                if (WRG_W.transform.position.y > WRG_R.transform.position.y) //white facing up //untested but probably right
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WBO (white facing up)");
+                    //B', D', D', B, D', F', D, F
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else if (WRG_R.transform.position.y > WRG_G.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WBO (red facing up)");
+                    //B', D, B, D, F', D, F
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else //the green side is facing up //untested but probably right
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WBO (green facing up)");
+                    //B', D', B, L, D', L'
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) //the piece is in the top but in the red blue corner
+            {
+                if (WRG_W.transform.position.y > WRG_R.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WRB (white facing up)");
+                    //R', D', D', R, F', D, F
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else if (WRG_R.transform.position.y > WRG_G.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WRB (red facing up)");
+                    //R', D, R, D', D', F', D, F
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else //the green side is facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WRB (green facing up)");
+                    //R', D', R, D, L, D', L'
+                    pieces = rotateBigCube.R(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //the piece is in the top but in the green orange corner
+            {
+                if (WRG_W.transform.position.y > WRG_R.transform.position.y) //white facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WOG (white facing up)");
+                    //B, D', B', F', D, F
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else if (WRG_R.transform.position.y > WRG_G.transform.position.y) //the red side is facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WOG (red facing up)");
+                    //B, F', D, F, B'
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                }
+                else //the green side is facing up
+                {
+                    Debug.Log("The WRG corner is incorrectly positioned at WOG (green facing up)");
+                    //B, D', B', D, D, L, D', L'
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+            }
+        }
+        //bottom layer
+        else if (objectIndex[1] == 0)
+        {
+            if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
+            {
+                if (WRG_W.transform.position.y < WRG_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YBR corner (white facing down)");
+                    //D', L, D, D, L', D, L', D, L
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                }
+                else if (WRG_R.transform.position.y < WRG_G.transform.position.y) //red down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YBR corner (red facing down)");
+                    //L, D', L'
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+                else if (WRG_G.transform.position.y < WRG_W.transform.position.y) //green down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YBR corner (green facing down)");
+                    //D', D', F', D, F
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //blue orange
+            {
+                if (WRG_W.transform.position.y < WRG_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YBO corner (white facing down)");
+                    //D, L, D, D, L', D', D', F', D, F
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else if (WRG_R.transform.position.y < WRG_G.transform.position.y) //red down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YBO corner (red facing down)");
+                    //D', L, D', L'
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+                else if (WRG_G.transform.position.y < WRG_W.transform.position.y) //green down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YBO corner (green facing down)");
+                    //F', D, F
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 2) //red green
+            {
+                if (WRG_W.transform.position.y < WRG_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YRG corner (white facing down)");
+                    //L, D, D, L', D', D', F', D, F
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else if (WRG_R.transform.position.y < WRG_G.transform.position.y) //red down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YRG corner (green facing down)");
+                    //D, L, D', L'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+                else if (WRG_G.transform.position.y < WRG_W.transform.position.y) //green down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YRG corner (green facing down)");
+                    //D', F', D, F
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0) //green orange
+            {
+                if (WRG_W.transform.position.y < WRG_R.transform.position.y) //white down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YGO corner (white facing down)");
+                    //D, L, D, D, L', D', D', F', D, F
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+                else if (WRG_R.transform.position.y < WRG_G.transform.position.y) //red down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YGO corner (red facing down)");
+                    //D, D, L, D', L'
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                }
+                else if (WRG_G.transform.position.y < WRG_W.transform.position.y) //green down
+                {
+                    Debug.Log("The WRG corner is in the bottom layer YGO corner (green facing down)");
+                    //F', D, F
+                    pieces = rotateBigCube.F(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.F(-90, 0, 0);
+                }
+            }
+        }
+        return pieces;
+    }
+    public List<List<List<GameObject>>> secondLayer(List<List<List<GameObject>>> pieces)
+    {
+        //temporary solution for rotation
+        //B', B', S, S, F, F
+        pieces = rotateBigCube.B(-90, 0, 0);
+        pieces = rotateBigCube.B(-90, 0, 0);
+        pieces = rotateBigCube.S(-90, 0, 0);
+        pieces = rotateBigCube.S(-90, 0, 0);
+        pieces = rotateBigCube.F(-90, 0, 0);
+        pieces = rotateBigCube.F(-90, 0, 0);
+
         return pieces;
     }
 }

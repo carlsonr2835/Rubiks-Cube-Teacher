@@ -98,7 +98,71 @@ public class RotateBigCube : MonoBehaviour
     //full cube rotations
     public void fullRotation(int x, int y, int z)
     {
-        Cube.transform.Rotate(x, y, z, Space.World);
+        //Cube.transform.Rotate(x, y, z, Space.World);
+        //
+        pieces[0][0][0].transform.parent = pieces[1][1][1].transform;//child all to center piece
+        pieces[1][0][0].transform.parent = pieces[1][1][1].transform;
+        pieces[2][0][0].transform.parent = pieces[1][1][1].transform;
+        pieces[0][0][1].transform.parent = pieces[1][1][1].transform;
+        pieces[1][0][1].transform.parent = pieces[1][1][1].transform;
+        pieces[2][0][1].transform.parent = pieces[1][1][1].transform;
+        pieces[0][0][2].transform.parent = pieces[1][1][1].transform;
+        pieces[1][0][2].transform.parent = pieces[1][1][1].transform;
+        pieces[2][0][2].transform.parent = pieces[1][1][1].transform;
+        //
+        pieces[0][1][0].transform.parent = pieces[1][1][1].transform;
+        pieces[1][1][0].transform.parent = pieces[1][1][1].transform;
+        pieces[2][1][0].transform.parent = pieces[1][1][1].transform;
+        pieces[0][1][1].transform.parent = pieces[1][1][1].transform;
+        pieces[2][1][1].transform.parent = pieces[1][1][1].transform;
+        pieces[0][1][2].transform.parent = pieces[1][1][1].transform;
+        pieces[1][1][2].transform.parent = pieces[1][1][1].transform;
+        pieces[2][1][2].transform.parent = pieces[1][1][1].transform;
+        //
+        pieces[0][2][0].transform.parent = pieces[1][1][1].transform;
+        pieces[1][2][0].transform.parent = pieces[1][1][1].transform;
+        pieces[2][2][0].transform.parent = pieces[1][1][1].transform;
+        pieces[0][2][1].transform.parent = pieces[1][1][1].transform;
+        pieces[1][2][1].transform.parent = pieces[1][1][1].transform;
+        pieces[2][2][1].transform.parent = pieces[1][1][1].transform;
+        pieces[0][2][2].transform.parent = pieces[1][1][1].transform;
+        pieces[1][2][2].transform.parent = pieces[1][1][1].transform;
+        pieces[2][2][2].transform.parent = pieces[1][1][1].transform;
+
+        pieces[1][1][1].transform.Rotate(x, y, z, Space.World);
+        pieces[0][0][0].transform.parent = Cube.transform;//unchild all from center piece
+        pieces[1][0][0].transform.parent = Cube.transform;
+        pieces[2][0][0].transform.parent = Cube.transform;
+        pieces[0][0][1].transform.parent = Cube.transform;
+        pieces[1][0][1].transform.parent = Cube.transform;
+        pieces[2][0][1].transform.parent = Cube.transform;
+        pieces[0][0][2].transform.parent = Cube.transform;
+        pieces[1][0][2].transform.parent = Cube.transform;
+        pieces[2][0][2].transform.parent = Cube.transform;
+        //
+        pieces[0][1][0].transform.parent = Cube.transform;
+        pieces[1][1][0].transform.parent = Cube.transform;
+        pieces[2][1][0].transform.parent = Cube.transform;
+        pieces[0][1][1].transform.parent = Cube.transform;
+        pieces[2][1][1].transform.parent = Cube.transform;
+        pieces[0][1][2].transform.parent = Cube.transform;
+        pieces[1][1][2].transform.parent = Cube.transform;
+        pieces[2][1][2].transform.parent = Cube.transform;
+        //
+        pieces[0][2][0].transform.parent = Cube.transform;
+        pieces[1][2][0].transform.parent = Cube.transform;
+        pieces[2][2][0].transform.parent = Cube.transform;
+        pieces[0][2][1].transform.parent = Cube.transform;
+        pieces[1][2][1].transform.parent = Cube.transform;
+        pieces[2][2][1].transform.parent = Cube.transform;
+        pieces[0][2][2].transform.parent = Cube.transform;
+        pieces[1][2][2].transform.parent = Cube.transform;
+        pieces[2][2][2].transform.parent = Cube.transform;
+        //need to move them all in array based on which axis of rotation and direction
+        if (x != 0)        {            if (x > 0)            {            }            else            {            }        }
+        else if (y != 0)        {            if (y > 0)            {            }            else            {            }        }
+        else if (z != 0)
+        {            if (z > 0)            {            }            else            {            }        }
     }
     //side rotations
     public List<List<List<GameObject>>> U(int x, int y, int z) //make a u method that takes in rotation so clock and counter is not necessary
