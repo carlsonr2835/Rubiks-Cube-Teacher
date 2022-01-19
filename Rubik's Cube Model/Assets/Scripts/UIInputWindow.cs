@@ -10,6 +10,7 @@ public class UIInputWindow : MonoBehaviour
     CubeState cubeState;
     ReadCube readCube;
     solveCube solveC;
+    ScrambleCube scrambleCube;
     public List<List<List<GameObject>>> pieces = new List<List<List<GameObject>>>();
 
     // Start is called before the first frame update
@@ -43,7 +44,7 @@ public class UIInputWindow : MonoBehaviour
         input = s;
         rotateBigCube = GameObject.Find("CubeHolder").GetComponent<RotateBigCube>();
         solveC = GameObject.Find("CubeHolder").GetComponent<solveCube>();
-
+        scrambleCube = GameObject.Find("CubeHolder").GetComponent<ScrambleCube>();
         //readCube.ReadState();
         /*List<GameObject> side = new List<GameObject>()
         {
@@ -244,12 +245,12 @@ public class UIInputWindow : MonoBehaviour
         {
             pieces = solveC.whiteCross(pieces);
             pieces = solveC.whiteCorners(pieces);
-            pieces = solveC.secondLayer(pieces);
+            //pieces = solveC.secondLayer(pieces);
         }
-        /*else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")
+        else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")
         {
-            solveC.scramble();
-        }*/
+            pieces = scrambleCube.scramble(pieces);
+        }
         else
         {
             Debug.Log("Not a valid move");
