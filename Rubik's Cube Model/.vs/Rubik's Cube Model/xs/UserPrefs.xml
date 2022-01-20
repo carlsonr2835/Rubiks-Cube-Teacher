@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{BCADFD05-EA54-4FFB-D8D4-D034D189212F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ScrambleCube.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/solveCube.cs">
     <Files>
-      <File FileName="Assets/Scripts/solveCube.cs" Line="932" Column="61" />
-      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="101" Column="9" />
-      <File FileName="Assets/Scripts/UIInputWindow.cs" Line="246" Column="13" />
+      <File FileName="Assets/Scripts/solveCube.cs" Line="1578" Column="135" />
+      <File FileName="Assets/Scripts/RotateBigCube.cs" />
+      <File FileName="Assets/Scripts/UIInputWindow.cs" />
+      <File FileName="Assets/Scripts/ScrambleCube.cs" />
       <File FileName="Assets/Scripts/CubeState.cs" />
       <File FileName="Assets/Scripts/CubeMap.cs" />
       <File FileName="Assets/Scripts/PivotRotation.cs" />
       <File FileName="Assets/Scripts/SelectFace.cs" />
       <File FileName="Assets/Scripts/ReadCube.cs" />
-      <File FileName="Assets/Scripts/ScrambleCube.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,7 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="05337b0f-d06e-4616-aea1-44028106d204" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f7b3eff-bf52-4205-b930-279dcaf12eaf" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

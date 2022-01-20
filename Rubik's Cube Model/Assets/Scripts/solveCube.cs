@@ -889,7 +889,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WR_R.transform.position.x > WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face\nF");
                         //F
@@ -2023,7 +2023,7 @@ public class solveCube : MonoBehaviour
             }
             else if (objectIndex[0] == 0 && objectIndex[2] == 2) //the piece is in the top but in the red green corner
             {
-                if (WRG_W.transform.position.y > WRG_R.transform.position.y) //white facing up
+                if (WOG_W.transform.position.y > WRG_R.transform.position.y) //white facing up
                 {
                     Debug.Log("The WOG corner is incorrectly positioned at WRG (white facing up)\nL, D, L', D', B, D', B'");
                     //L, D, L', D', B, D', B'
@@ -2047,7 +2047,7 @@ public class solveCube : MonoBehaviour
                     pieces = rotateBigCube.D(0, -90, 0);
                     pieces = rotateBigCube.L(0, 0, 90);
                 }
-                else //the orange side is facing up
+                else if (WOG_O.transform.position.y > WOG_W.transform.position.y)//the orange side is facing up
                 {
                     Debug.Log("The WOG corner is incorrectly positioned at WRG (orange facing up)\nL, D', L', B, D', B'");
                     //L, D', L', B, D', B'
@@ -2083,9 +2083,9 @@ public class solveCube : MonoBehaviour
                 }
                 else if (WOG_G.transform.position.y < WOG_O.transform.position.y) //green down
                 {
-                    Debug.Log("The WOG corner is in the bottom layer YBR corner (green facing down)\nD, B, D', B'");
+                    Debug.Log("The WOG corner is in the bottom layer YBR corner (green facing down)\nD', B, D', B'");
                     //D, B, D', B'
-                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                     pieces = rotateBigCube.B(90, 0, 0);
                     pieces = rotateBigCube.D(0, 90, 0);
                     pieces = rotateBigCube.B(-90, 0, 0);
@@ -2367,17 +2367,18 @@ public class solveCube : MonoBehaviour
             {
                 if (WRG_W.transform.position.y < WRG_R.transform.position.y) //white down
                 {
-                    Debug.Log("The WRG corner is in the bottom layer YBR corner (white facing down)\nD', L, D, D, L', D, L', D, L");
-                    //D', L, D, D, L', D, L', D, L
+                    Debug.Log("The WRG corner is in the bottom layer YBR corner (white facing down)\nD', L, D, D, L', D', D', F', D, F");
+                    //D', L, D, D, L', D', D', F', D, F
                     pieces = rotateBigCube.D(0, 90, 0);
                     pieces = rotateBigCube.L(0, 0, 90);
                     pieces = rotateBigCube.D(0, -90, 0);
                     pieces = rotateBigCube.D(0, -90, 0);
                     pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.F(90, 0, 0);
                     pieces = rotateBigCube.D(0, -90, 0);
-                    pieces = rotateBigCube.L(0, 0, -90);
-                    pieces = rotateBigCube.D(0, -90, 0);
-                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.F(-90, 0, 0);
                 }
                 else if (WRG_R.transform.position.y < WRG_G.transform.position.y) //red down
                 {
