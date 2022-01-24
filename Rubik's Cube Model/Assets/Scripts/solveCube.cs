@@ -889,7 +889,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x > WR_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face\nF");
                         //F
@@ -1744,8 +1744,13 @@ public class solveCube : MonoBehaviour
                     Debug.Log("The WOB corner is incorrectly positioned at WGO (blue facing up)\nL, D', L', D', R, D', R'");
                     //L', D', L, D, R, D', R'
                     pieces = rotateBigCube.L(0, 0, -90);
-                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, 90);
-                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                }
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.R(0, 0, 90);
+                }
                 else //the orange side is facing up
                 {
                     Debug.Log("The WOB corner is incorrectly positioned at WGO (orange facing up)\nL, D, L', B', D, B");
