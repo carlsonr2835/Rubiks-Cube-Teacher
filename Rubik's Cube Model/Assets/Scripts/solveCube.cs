@@ -671,7 +671,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[2] == 0)
                 {
-                    if (WG_G.transform.position.z > WG_W.transform.position.z) //if the position is correct
+                    if (WG_G.transform.position.z < WG_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WG piece is correctly oriented in the second layer adjacent to the blue face and along the orange face\nB, B, L, B, B");
                         //B, B, L, B, B
@@ -889,7 +889,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WR_R.transform.position.x > WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face\nF");
                         //F
@@ -2028,7 +2028,7 @@ public class solveCube : MonoBehaviour
             }
             else if (objectIndex[0] == 0 && objectIndex[2] == 2) //the piece is in the top but in the red green corner
             {
-                if (WOG_W.transform.position.y > WRG_R.transform.position.y) //white facing up
+                if (WOG_W.transform.position.y > WOG_G.transform.position.y) //white facing up
                 {
                     Debug.Log("The WOG corner is incorrectly positioned at WRG (white facing up)\nL, D, L', D', B, D', B'");
                     //L, D, L', D', B, D', B'
@@ -2409,17 +2409,16 @@ public class solveCube : MonoBehaviour
                 if (WRG_W.transform.position.y < WRG_R.transform.position.y) //white down
                 {
                     Debug.Log("The WRG corner is in the bottom layer YBO corner (white facing down)\nD, L, D, D, L', D', D', F', D, F");
-                    //D, L, D, D, L', D', D', F', D, F
+                    //D', L, D', D', L', D, L, D', L'
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
                     pieces = rotateBigCube.D(0, -90, 0);
                     pieces = rotateBigCube.L(0, 0, 90);
-                    pieces = rotateBigCube.D(0, -90, 0);
-                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                     pieces = rotateBigCube.L(0, 0, -90);
-                    pieces = rotateBigCube.D(0, 90, 0);
-                    pieces = rotateBigCube.D(0, 90, 0);
-                    pieces = rotateBigCube.F(90, 0, 0);
-                    pieces = rotateBigCube.D(0, -90, 0);
-                    pieces = rotateBigCube.F(-90, 0, 0);
                 }
                 else if (WRG_R.transform.position.y < WRG_G.transform.position.y) //red down
                 {
