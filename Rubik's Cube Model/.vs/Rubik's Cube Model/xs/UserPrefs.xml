@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RotateBigCube.cs">
     <Files>
       <File FileName="Assets/Scripts/solveCube.cs" Line="851" Column="57" />
-      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="471" Column="19" />
       <File FileName="Assets/Scripts/UIInputWindow.cs" />
       <File FileName="Assets/Scripts/ScrambleCube.cs" />
       <File FileName="Assets/Scripts/CubeState.cs" />
@@ -21,7 +21,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f7af6c51-4b49-4647-9c0f-a4fb38a86fbf" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4e51d41a-cb76-42e6-a9eb-f25441a71e8d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
