@@ -17,7 +17,7 @@ public class solveCube : MonoBehaviour
     public GameObject YOB_Y;
     public GameObject YOB_O;
     public GameObject YOB_B;
-    public GameObject Down;
+    public GameObject Y;
     public GameObject YG;
     public GameObject YG_Y;
     public GameObject YG_G;
@@ -35,15 +35,15 @@ public class solveCube : MonoBehaviour
     public GameObject YRB_Y;
     public GameObject YRB_R;
     public GameObject YRB_B;
-    public GameObject Back;
+    public GameObject O;
     public GameObject OG;
     public GameObject OG_O;
     public GameObject OG_G;
     public GameObject OB;
     public GameObject OB_O;
     public GameObject OB_B;
-    public GameObject Right;
-    public GameObject Left;
+    public GameObject B;
+    public GameObject G;
     public GameObject Middle;
     public GameObject RB;
     public GameObject RB_R;
@@ -51,8 +51,8 @@ public class solveCube : MonoBehaviour
     public GameObject RG;
     public GameObject RG_R;
     public GameObject RG_G;
-    public GameObject Front;
-    public GameObject Up;
+    public GameObject R;
+    public GameObject W;
     public GameObject WO;
     public GameObject WO_W;
     public GameObject WO_O;
@@ -107,25 +107,25 @@ public class solveCube : MonoBehaviour
         pieces[1][0][0] = YO;
         pieces[2][0][0] = YOB;
         pieces[0][1][0] = OG;
-        pieces[1][1][0] = Back;
+        pieces[1][1][0] = O;
         pieces[2][1][0] = OB;
         pieces[0][2][0] = WOG;
         pieces[1][2][0] = WO;
         pieces[2][2][0] = WOB;
         pieces[0][0][1] = YG;
-        pieces[1][0][1] = Down;
+        pieces[1][0][1] = Y;
         pieces[2][0][1] = YB;
-        pieces[0][1][1] = Left;
+        pieces[0][1][1] = G;
         pieces[1][1][1] = Middle;
-        pieces[2][1][1] = Right;
+        pieces[2][1][1] = B;
         pieces[0][2][1] = WG;
-        pieces[1][2][1] = Up;
+        pieces[1][2][1] = W;
         pieces[2][2][1] = WB;
         pieces[0][0][2] = YRG;
         pieces[1][0][2] = YR;
         pieces[2][0][2] = YRB;
         pieces[0][1][2] = RG;
-        pieces[1][1][2] = Front;
+        pieces[1][1][2] = R;
         pieces[2][1][2] = RB;
         pieces[0][2][2] = WRG;
         pieces[1][2][2] = WR;
@@ -206,44 +206,29 @@ public class solveCube : MonoBehaviour
             }
 
         }
-
+        if (objectIndex.Count > 0)        {            Debug.Log(objectIndex[0] + objectIndex[1] + objectIndex[2]);        }
+        else        {            Debug.Log("Empty object index");        }
         return objectIndex;
     }
+    public List<List<List<GameObject>>> centerPieces(List<List<List<GameObject>>> pieces)    {        List<int> objectIndex = new List<int>();
+        //CENTER PIECES
+        //white yellow
+        
+        objectIndex = searching(W, pieces); //find where top is
+        Debug.Log(objectIndex[0] + objectIndex[1] + objectIndex[2]);
+        if (objectIndex[1] == 2) //correct        {            Debug.Log("The up and down centers are correct");        }
+        else if (objectIndex[1] == 1) //if its in the Equator        {            //must determine which center it is on            if (objectIndex[0] == 0)            {                Debug.Log("The up and down centers are incorrect (up == left)\nS");                pieces = rotateBigCube.S(-90, 0, 0);            }            else if (objectIndex[0] == 2)            {                Debug.Log("The up and down centers are incorrect (up == right)\nS'");                pieces = rotateBigCube.S(90, 0, 0);            }            else if (objectIndex[2] == 0)            {                Debug.Log("The up and down centers are incorrect (up == back)\nM'");                pieces = rotateBigCube.M(0, 0, 90);            }            else if (objectIndex[2] == 2)            {                Debug.Log("The up and down centers are incorrect (up == front)\nM");                pieces = rotateBigCube.M(0, 0, -90);            }        }
+        else if (objectIndex[1] == 0) //in the bottom        {            Debug.Log("The up and down centers are incorrect (up == down)\nS, S");            pieces = rotateBigCube.S(-90, 0, 0);            pieces = rotateBigCube.S(-90, 0, 0);        }
+        //red, green, blue, orange
+        objectIndex = searching(R, pieces);
+        if (objectIndex[2] == 2) //correct        {            Debug.Log("The front, right, left, and back centers are correct");        }
+        else if (objectIndex[2] == 0)        {            //rotate e twice            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == back)\nE, E");            pieces = rotateBigCube.E(0, 90, 0);            pieces = rotateBigCube.E(0, 90, 0);        }
+        else if (objectIndex[0] == 0)        {            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == left)\nE'");            pieces = rotateBigCube.E(0, -90, 0);        }
+        else if (objectIndex[0] == 2)        {            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == right)\nE");            pieces = rotateBigCube.E(0, 90, 0);        }        return pieces;    }
     public List<List<List<GameObject>>> whiteCross(List<List<List<GameObject>>> pieces)
     {
         //first check if it is solved
         List<int> objectIndex = new List<int>();
-
-        //CENTER PIECE
-        /*if (Up.transform.position.y < Down.transform.position.y) //down is up and up is down
-        {
-            //rotate twice on the z axis
-            rotateBigCube.fullRotation(0, 0, 180);
-        }
-        else if (Up.transform.position.y == Down.transform.position.y) //middle layer
-        {
-            //rotate once on the z axis (positively)?
-            rotateBigCube.fullRotation(0, 0, 90);
-        }
-
-        if (Front.transform.position.z < Back.transform.position.z) //ront is back and back is front
-        {
-            //rotate twice on the y axis
-            rotateBigCube.fullRotation(0, 180, 0);
-        }
-        else if (Front.transform.position.z == Back.transform.position.z)
-        {
-            if (Left.transform.position.z > Right.transform.position.z) //green is in the front
-            {
-                //rotate once (positively?) on the y axis
-                rotateBigCube.fullRotation(0, 90, 0);
-            }
-            else //blue is in the front
-            {
-                //rotate once the other way on the y axis
-                rotateBigCube.fullRotation(0, -90, 0);
-            }
-        }*/
         //WB PIECE
         objectIndex = searching(WB, pieces);
         if (objectIndex[0] == 2 && objectIndex[1] == 2 && objectIndex[2] == 1)
@@ -889,7 +874,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0)
                 {
-                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x > WR_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face\nF");
                         //F

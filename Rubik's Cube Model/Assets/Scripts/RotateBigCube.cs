@@ -165,55 +165,55 @@ public class RotateBigCube : MonoBehaviour
         {
             if (z > 0)
             {
-                GameObject temp1 = pieces[][2][];
-                GameObject temp2 = pieces[][2][];
-                GameObject temp3 = pieces[][2][];
-                GameObject temp4 = pieces[][2][];
-                GameObject temp5 = pieces[][2][];
-                GameObject temp6 = pieces[][2][];
-                GameObject temp7 = pieces[][2][];
-                GameObject temp8 = pieces[][2][];
-                GameObject temp9 = pieces[][2][];
+                GameObject temp1 = pieces[0][2][2];
+                GameObject temp2 = pieces[1][2][2];
+                GameObject temp3 = pieces[2][2][2];
+                GameObject temp4 = pieces[0][2][1];
+                GameObject temp5 = pieces[1][2][1];
+                GameObject temp6 = pieces[2][2][1];
+                GameObject temp7 = pieces[0][2][0];
+                GameObject temp8 = pieces[1][2][0];
+                GameObject temp9 = pieces[2][2][0];
+                //white = orange
+                pieces[0][2][2] = pieces[0][2][0];
+                pieces[1][2][2] = pieces[1][2][0];
+                pieces[2][2][2] = pieces[2][2][0];
+                pieces[0][2][1] = pieces[0][1][0];
+                pieces[1][2][1] = pieces[1][1][0];
+                pieces[2][2][1] = pieces[2][1][0];
+                pieces[0][2][0] = pieces[0][0][0];
+                pieces[1][2][0] = pieces[1][0][0];
+                pieces[2][2][0] = pieces[2][0][0];
+                //orange = yellow
+                pieces[0][2][0] = pieces[0][0][0];
+                pieces[1][2][0] = pieces[1][0][0];
+                pieces[2][2][0] = pieces[2][0][0];
+                pieces[0][1][0] = pieces[0][0][1];
+                pieces[1][1][0] = pieces[1][0][1];
+                pieces[2][1][0] = pieces[2][0][1];
+                pieces[0][0][0] = pieces[0][0][2];
+                pieces[1][0][0] = pieces[1][0][2];
+                pieces[2][0][0] = pieces[2][0][2];
+                //yellow = red
+                pieces[0][0][0] = pieces[0][0][2];
+                pieces[1][0][0] = pieces[1][0][2];
+                pieces[2][0][0] = pieces[2][0][2];
+                pieces[0][0][1] = pieces[0][1][2];
+                pieces[1][0][1] = pieces[1][1][2];
+                pieces[2][0][1] = pieces[2][1][2];
+                pieces[0][0][2] = pieces[0][2][2];
+                pieces[1][0][2] = pieces[1][2][2];
+                pieces[2][0][2] = pieces[2][2][2];
                 //
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                pieces[][2][] = pieces[][][0];
-                //
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                pieces[][][0] = pieces[][0][];
-                //
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                pieces[][0][] = pieces[][][2];
-                //
-                pieces[][][2] = temp1;
-                pieces[][][2] = temp2;
-                pieces[][][2] = temp3;
-                pieces[][][2] = temp4;
-                pieces[][][2] = temp5;
-                pieces[][][2] = temp6;
-                pieces[][][2] = temp7;
-                pieces[][][2] = temp8;
-                pieces[][][2] = temp9;
+                pieces[0][0][2] = temp1;
+                pieces[1][0][2] = temp2;
+                pieces[2][0][2] = temp3;
+                pieces[0][1][2] = temp4;
+                pieces[1][1][2] = temp5;
+                pieces[2][1][2] = temp6;
+                pieces[0][2][2] = temp7;
+                pieces[1][2][2] = temp8;
+                pieces[2][2][2] = temp9;
             }
             else
             {

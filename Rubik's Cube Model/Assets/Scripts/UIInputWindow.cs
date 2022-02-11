@@ -243,6 +243,7 @@ public class UIInputWindow : MonoBehaviour
         }
         else if (input == "solve" || input == "Solve" || input == "SOLVE")
         {
+            //pieces = solveC.centerPieces(pieces);
             pieces = solveC.whiteCross(pieces);
             pieces = solveC.whiteCorners(pieces);
             //pieces = solveC.secondLayer(pieces);
