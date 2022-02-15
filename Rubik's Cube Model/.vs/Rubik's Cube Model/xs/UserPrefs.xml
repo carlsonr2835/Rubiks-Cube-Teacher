@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{BCADFD05-EA54-4FFB-D8D4-D034D189212F}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RotateBigCube.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/solveCube.cs">
     <Files>
-      <File FileName="Assets/Scripts/solveCube.cs" Line="851" Column="57" />
-      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="427" Column="29" />
-      <File FileName="Assets/Scripts/UIInputWindow.cs" />
+      <File FileName="Assets/Scripts/RotateBigCube.cs" Line="482" Column="23" />
+      <File FileName="Assets/Scripts/solveCube.cs" Line="2911" Column="22" />
+      <File FileName="Assets/Scripts/UIInputWindow.cs" Line="242" Column="13" />
       <File FileName="Assets/Scripts/ScrambleCube.cs" />
       <File FileName="Assets/Scripts/CubeState.cs" />
       <File FileName="Assets/Scripts/CubeMap.cs" />

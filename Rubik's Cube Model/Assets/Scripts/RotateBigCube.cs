@@ -96,7 +96,7 @@ public class RotateBigCube : MonoBehaviour
         return pieces;
     }*/
     //full cube rotations
-    public void fullRotation(int x, int y, int z)
+    public List<List<List<GameObject>>> fullRotation(int x, int y, int z)
     {
         //Cube.transform.Rotate(x, y, z, Space.World);
         //
@@ -267,6 +267,7 @@ public class RotateBigCube : MonoBehaviour
                 pieces[1][2][0] = temp8;
                 pieces[2][2][0] = temp9;
             }        }
+        return pieces;
     }
     //side rotations
     public List<List<List<GameObject>>> U(int x, int y, int z) //make a u method that takes in rotation so clock and counter is not necessary

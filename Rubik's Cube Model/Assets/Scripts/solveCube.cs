@@ -168,7 +168,23 @@ public class solveCube : MonoBehaviour
     List<int> searching(GameObject piece, List<List<List<GameObject>>> pieces)
     {
         List<int> objectIndex = new List<int>();
-        int x = 0;
+        for (int x = 0; x <= 2; x++)
+        {
+            for (int y = 0; y <= 2; y++)
+            {
+                for (int z = 0; z <= 2; z++)
+                {
+                    if (pieces[x][y][z] == piece)
+                    {
+                        //Debug.Log("Object: " + piece + "found at: " + x + ", " + y + ", " + z);
+                        objectIndex.Add(x);
+                        objectIndex.Add(y);
+                        objectIndex.Add(z);
+                    }
+                }
+            }
+        }
+        /*int x = 0;
         int y = 0;
         int z = 0;
         while (true)
@@ -192,7 +208,7 @@ public class solveCube : MonoBehaviour
                     {
                         y = 0;
                         z++;
-                        if (z > 2)
+                        if (z >= 2)
                         {
                             //Debug.Log("Fully searched!");
                             break;
@@ -204,10 +220,16 @@ public class solveCube : MonoBehaviour
                     x++;
                 }
             }
-
+            return objectIndex;
         }
-        if (objectIndex.Count > 0)        {            Debug.Log(objectIndex[0] + objectIndex[1] + objectIndex[2]);        }
-        else        {            Debug.Log("Empty object index");        }
+        if (objectIndex.Count > 0)
+        {
+            Debug.Log(objectIndex[0] + objectIndex[1] + objectIndex[2]);
+        }
+        else
+        {
+            Debug.Log("Empty object index");
+        }*/
         return objectIndex;
     }
     public List<List<List<GameObject>>> centerPieces(List<List<List<GameObject>>> pieces)    {        List<int> objectIndex = new List<int>();
@@ -2500,14 +2522,107 @@ public class solveCube : MonoBehaviour
     }
     public List<List<List<GameObject>>> secondLayer(List<List<List<GameObject>>> pieces)
     {
-        //temporary solution for rotation
-        //B', B', S, S, F, F
-        pieces = rotateBigCube.B(-90, 0, 0);
-        pieces = rotateBigCube.B(-90, 0, 0);
-        pieces = rotateBigCube.S(-90, 0, 0);
-        pieces = rotateBigCube.S(-90, 0, 0);
-        pieces = rotateBigCube.F(-90, 0, 0);
-        pieces = rotateBigCube.F(-90, 0, 0);
+        //FLIP CUBE UPSIDE DOWN
+        rotateBigCube.fullRotation(90, 0, 0);
+        rotateBigCube.fullRotation(90, 0, 0);
+
+        List<int> objectIndex = new List<int>();
+        //RB piece
+        objectIndex = searching(RB, pieces);
+        //on center layer
+        if (objectIndex[1] == 1)
+        {
+            //CORRECT POSITION
+            if (objectIndex[0] == 0 && objectIndex[2] == 2)
+            {
+                if (RB_B.transform.position.x < RB_R.transform.position.x)
+                {
+                    //the piece is correct
+                    Debug.Log("The RB piece is correct");
+                }
+                else
+                {
+                    Debug.Log("the RB piece is oriented incorrectly\nL', U', L, U (LALG), Y', R, U, R', U' (RALG), Y (back), U (to line up), L', U', L, U (LALG), Y', R, U, R', U' (RALG)");
+                    //the piece is oriented incorrectly
+                    //L', U', L, U (LALG), Y', R, U, R', U' (RALG), Y (back), U (to line up), L', U', L, U (LALG), Y', R, U, R', U' (RALG)
+                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);
+                    pieces = rotateBigCube.U(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);
+                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
+                }            }
+            //IN THE OB spot
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0)
+            {
+                if (RB_B.transform.position.x < RB_R.transform.position.x)
+                {
+                    Debug.Log("The RB piece is positioned in the OB spot with blue adj to blue and red adj orange\n(turn blue), LALG, (turn orange), RALG, U', (turn blue), RALG, (turn red), LALG");
+                    //(turn blue), LALG, (turn orange), RALG, U', (turn blue), RALG, (turn red), LALG
+                }
+                else
+                {                    Debug.Log("The RB piece is positioned in the OB spot with red adj to blue and blue adj orange\nturn to blue side, LALG, (turn orange), RALG, Turn back to red (two turns), LALG, (turn blue), RALG");
+                    //turn to blue side, LALG, (turn orange), RALG, Turn back to red (two turns), LALG, (turn blue), RALG
+                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+        }
+        else if (objectIndex[1] == 2) //its in the top
+        {            if (objectIndex[0] == 0) //YB            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }
+        
+        //PIECE: OB
+        objectIndex = searching(OB, pieces);
+        //on center layer
+        if (objectIndex[1] == 1)
+        {
+            if (objectIndex[0] == 0 && objectIndex[2] == 2)//RB
+            {
+                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0)//OB
+            {
+                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }
+            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+        }
+        else if (objectIndex[1] == 2) //its in the top
+        {            if (objectIndex[0] == 0) //YB            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }
+
+        //PIECE: OG
+        objectIndex = searching(OG, pieces);
+        //on center layer
+        if (objectIndex[1] == 1)
+        {
+            if (objectIndex[0] == 0 && objectIndex[2] == 2)
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            //IN THE OB spot
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0)
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+        }
+        else if (objectIndex[1] == 2) //its in the top
+        {            if (objectIndex[0] == 0) //YB            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }
+
+        //PIECE: RG
+        objectIndex = searching(RG, pieces);
+        //on center layer
+        if (objectIndex[1] == 1)
+        {
+            if (objectIndex[0] == 0 && objectIndex[2] == 2) //RB
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            //IN THE OB spot
+            else if (objectIndex[0] == 0 && objectIndex[2] == 0)
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
+            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
+        }
+        else if (objectIndex[1] == 2) //its in the top
+        {            if (objectIndex[0] == 0) //YB            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }
 
         return pieces;
     }
