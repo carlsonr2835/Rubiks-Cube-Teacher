@@ -244,14 +244,18 @@ public class UIInputWindow : MonoBehaviour
         else if (input == "solve" || input == "Solve" || input == "SOLVE")
         {
             //pieces = solveC.centerPieces(pieces);
-            pieces = solveC.whiteCross(pieces);
-            pieces = solveC.whiteCorners(pieces);
+            //pieces = solveC.whiteCross(pieces);
+            //pieces = solveC.whiteCorners(pieces);
             pieces = solveC.secondLayer(pieces);
         }
         else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")
         {
             pieces = scrambleCube.scramble(pieces);
         }
+        else if (input == "ralg" || input == "RALG")        {            pieces = rotateBigCube.R(0, 0, -90);            pieces = rotateBigCube.U(0, 90, 0);            pieces = rotateBigCube.R(0, 0, 90);            pieces = rotateBigCube.U(0, -90, 0);        }
+        else if (input == "lalg" || input == "LALG") {            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.U(0, -90, 0);            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.U(0, 90, 0);        }
+        else if (input == "ralglalg" || input == "RALGLALG" || input == "ralg lalg" || input == "RALG LALG")        {            pieces = rotateBigCube.R(0, 0, -90);            pieces = rotateBigCube.U(0, 90, 0);            pieces = rotateBigCube.R(0, 0, 90);            pieces = rotateBigCube.U(0, -90, 0);            pieces = rotateBigCube.fullRotation(0, 90, 0);            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.U(0, -90, 0);            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.U(0, 90, 0);        }
+        else if (input == "lalgralg" || input == "LALGRALG" || input == "lalg ralg" || input == "LALG RALG")        {            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.U(0, -90, 0);            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.U(0, 90, 0);            pieces = rotateBigCube.fullRotation(0, -90, 0);            pieces = rotateBigCube.R(0, 0, -90);            pieces = rotateBigCube.U(0, 90, 0);            pieces = rotateBigCube.R(0, 0, 90);            pieces = rotateBigCube.U(0, -90, 0);        }
         else
         {
             Debug.Log("Not a valid move");
