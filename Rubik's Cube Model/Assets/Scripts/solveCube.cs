@@ -232,21 +232,69 @@ public class solveCube : MonoBehaviour
         }*/
         return objectIndex;
     }
-    public List<List<List<GameObject>>> centerPieces(List<List<List<GameObject>>> pieces)    {        List<int> objectIndex = new List<int>();
-        //CENTER PIECES
-        //white yellow
-        
-        objectIndex = searching(W, pieces); //find where top is
+    public List<List<List<GameObject>>> centerPieces(List<List<List<GameObject>>> pieces)
+    {
+        List<int> objectIndex = new List<int>();        //CENTER PIECES        //white yellow        objectIndex = searching(W, pieces); //find where top is
         Debug.Log(objectIndex[0] + objectIndex[1] + objectIndex[2]);
-        if (objectIndex[1] == 2) //correct        {            Debug.Log("The up and down centers are correct");        }
-        else if (objectIndex[1] == 1) //if its in the Equator        {            //must determine which center it is on            if (objectIndex[0] == 0)            {                Debug.Log("The up and down centers are incorrect (up == left)\nS");                pieces = rotateBigCube.S(-90, 0, 0);            }            else if (objectIndex[0] == 2)            {                Debug.Log("The up and down centers are incorrect (up == right)\nS'");                pieces = rotateBigCube.S(90, 0, 0);            }            else if (objectIndex[2] == 0)            {                Debug.Log("The up and down centers are incorrect (up == back)\nM'");                pieces = rotateBigCube.M(0, 0, 90);            }            else if (objectIndex[2] == 2)            {                Debug.Log("The up and down centers are incorrect (up == front)\nM");                pieces = rotateBigCube.M(0, 0, -90);            }        }
-        else if (objectIndex[1] == 0) //in the bottom        {            Debug.Log("The up and down centers are incorrect (up == down)\nS, S");            pieces = rotateBigCube.S(-90, 0, 0);            pieces = rotateBigCube.S(-90, 0, 0);        }
+        if (objectIndex[1] == 2) //correct
+        {
+            Debug.Log("The up and down centers are correct");
+        }
+        else if (objectIndex[1] == 1) //if its in the Equator
+        {
+            //must determine which center it is on
+            if (objectIndex[0] == 0)
+            {
+                Debug.Log("The up and down centers are incorrect (up == left)\nS");
+                pieces = rotateBigCube.S(-90, 0, 0);
+            }
+            else if (objectIndex[0] == 2)
+            {
+                Debug.Log("The up and down centers are incorrect (up == right)\nS'");
+                pieces = rotateBigCube.S(90, 0, 0);
+            }
+            else if (objectIndex[2] == 0)
+            {
+                Debug.Log("The up and down centers are incorrect (up == back)\nM'");
+                pieces = rotateBigCube.M(0, 0, 90);
+            }
+            else if (objectIndex[2] == 2)
+            {
+                Debug.Log("The up and down centers are incorrect (up == front)\nM");
+                pieces = rotateBigCube.M(0, 0, -90);
+            }
+        }
+        else if (objectIndex[1] == 0) //in the bottom
+        {
+            Debug.Log("The up and down centers are incorrect (up == down)\nS, S");
+            pieces = rotateBigCube.S(-90, 0, 0);
+            pieces = rotateBigCube.S(-90, 0, 0);
+        }
         //red, green, blue, orange
         objectIndex = searching(R, pieces);
-        if (objectIndex[2] == 2) //correct        {            Debug.Log("The front, right, left, and back centers are correct");        }
-        else if (objectIndex[2] == 0)        {            //rotate e twice            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == back)\nE, E");            pieces = rotateBigCube.E(0, 90, 0);            pieces = rotateBigCube.E(0, 90, 0);        }
-        else if (objectIndex[0] == 0)        {            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == left)\nE'");            pieces = rotateBigCube.E(0, -90, 0);        }
-        else if (objectIndex[0] == 2)        {            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == right)\nE");            pieces = rotateBigCube.E(0, 90, 0);        }        return pieces;    }
+        if (objectIndex[2] == 2) //correct
+        {
+            Debug.Log("The front, right, left, and back centers are correct");
+        }
+        else if (objectIndex[2] == 0)
+        {
+            //rotate e twice
+            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == back)\nE, E");
+            pieces = rotateBigCube.E(0, 90, 0);
+            pieces = rotateBigCube.E(0, 90, 0);
+        }
+        else if (objectIndex[0] == 0)
+        {
+            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == left)\nE'");
+            pieces = rotateBigCube.E(0, -90, 0);
+        }
+        else if (objectIndex[0] == 2)
+        {
+            Debug.Log("The font, right, left, and back centers are incorrectly oriented (front == right)\nE");
+            pieces = rotateBigCube.E(0, 90, 0);
+        }
+        return pieces;
+    }
     public List<List<List<GameObject>>> whiteCross(List<List<List<GameObject>>> pieces)
     {
         //first check if it is solved
@@ -2518,140 +2566,6 @@ public class solveCube : MonoBehaviour
                 }
             }
         }
-        return pieces;
-    }
-    public List<List<List<GameObject>>> secondLayer(List<List<List<GameObject>>> pieces)
-    {
-        //FLIP CUBE UPSIDE DOWN
-        //rotateBigCube.fullRotation(90, 0, 0);
-        //rotateBigCube.fullRotation(90, 0, 0);
-
-        List<int> objectIndex = new List<int>();
-        //RB piece
-        objectIndex = searching(RB, pieces);
-        //on center layer
-        if (objectIndex[1] == 1)
-        {
-            //CORRECT POSITION
-            if (objectIndex[0] == 0 && objectIndex[2] == 2)
-            {
-                if (RB_B.transform.position.x > RB_R.transform.position.x)
-                {
-                    //the piece is correct
-                    Debug.Log("The RB piece is correct");
-                }
-                else
-                {
-                    Debug.Log("the RB piece is oriented incorrectly\nL', U', L, U (LALG), Y', R, U, R', U', (RALG), Y (back), U', U', L', U', L, U (LALG), Y', R, U, R', U' (RALG)"); //checked
-                    //the piece is oriented incorrectly
-                    //L', U', L, U(LALG), Y', R, U, R' U', (RALG), Y (back), U', U', L', U', L, U (LALG), Y', R, U, R', U'(RALG)
-                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                }            }
-            //IN THE OB spot
-            else if (objectIndex[0] == 0 && objectIndex[2] == 0)
-            {
-                if (RB_B.transform.position.x < RB_R.transform.position.x)
-                {
-                    Debug.Log("[not coded] The RB piece is positioned in the OB spot with blue adj to blue and red adj orange\nY', LALG, Y', RALG, U', Y, RALG, Y, LALG");
-                    //Y', LALG, Y', RALG, U', Y, RALG, Y, LALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);
-                }
-                else
-                {                    Debug.Log("[not coded] The RB piece is positioned in the OB spot with red adj to blue and blue adj orange\nY', LALG, Y', RALG, Y, Y, LALG, Y', RALG");
-                    //Y', LALG, Y', RALG, Y, Y, LALG, Y', RALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                }
-            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if (RB_B.transform.position.x > RB_R.transform.position.x)                {                    Debug.Log("The RB piece is positioned in the OG spot with blue adj green and red adj orange\nY, RALG, Y, LALG, Y, Y, (red in front), U', U', LALG, Y', RALG");                    //Y, RALG, Y, LALG, Y, Y, (red in front), U', U', LALG, Y', RALG                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }                else                {                    Debug.Log("The RB piece is positioned in the OG spot with red adj green and blue adj orange\nY, RALG, Y (i think), LALG, Y (again to get to blue), U, RALG, Y, LALG");                    //Y, RALG, Y (i think), LALG, Y (again to get to blue), U, RALG, Y, LALG                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
-            {                if (RB_B.transform.position.x > RB_R.transform.position.x)                {                    Debug.Log("The RB piece is positioned in the RG spot with red adj red and blue adj green\nRALG, Y, LALG, Y', Y', (blue front), RALG, Y, LALG");                    //RALG, Y, LALG, Y', Y', (blue front), RALG, Y, LALG                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }                else                {                    Debug.Log("The RB piece is positioned in the RG spot with blue adj red and red adj green\nRALG, Y, LALG, Y', LALG, Y', RALG"); //checked                    //RALG, Y, LALG, Y', LALG, Y', RALG                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }            }
-        }
-        else if (objectIndex[1] == 2) //its in the top
-        {            if (objectIndex[0] == 0) //YB            {                if (RB_B.transform.position.y < RB_R.transform.position.y)                {                    Debug.Log("The RB piece is in the top YB spot with red adj blue\nU', U', LALG, Y', RALG");                    //U', U', LALG, Y', RALG                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }                else                {                    Debug.Log("The RB piece is in the top YB spot with blue adj blue\nY', U, RALG, Y, LALG");                    //Y', U, RALG, Y, LALG                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }            }            else if (objectIndex[2] == 0) //YO                                      //SOMETHING IS WRONG HERE            {                if (RB_B.transform.position.y < RB_R.transform.position.y)                {                    Debug.Log("The RB piece is in the top YO spot with R adj orange\nU, LALG, Y', RALG");                    //U, LALG, Y', RALG                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }                else                {                    Debug.Log("The RB piece is in the top YO spot with B adj orange\nY, (blue), RALG, Y', LALG");                    //Y, (blue), RALG, Y', LALG                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }            }            else if (objectIndex[0] == 2) //YG            {                if (RB_B.transform.position.y < RB_R.transform.position.y)                {                    Debug.Log("The RB piece is in the top YG spot with R adj green\nLALG, Y, RALG");                    //LALG, Y, RALG                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }                else                {                    Debug.Log("The RB piece is in the top YG spot with B adj green\nY', U', RALG, Y, LALG");                    //Y', U', RALG, Y, LALG                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }            }            else if (objectIndex[2] == 2) //YR            {                if (RB_B.transform.position.y < RB_R.transform.position.y)                {                    Debug.Log("The RB piece is in the top YR spot with R adj red\nY', U, U, RALG, Y, LALG");                    //Y', U, U, RALG, Y, LALG                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }                else                {                    Debug.Log("The RB piece is in the top YR spot with B adj red\nU', LALG, Y', RALG");                    //U', LALG, Y', RALG                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);
-                }            }        }
-        objectIndex = searching(B, pieces);
-        if (objectIndex[2] == 2)        {            Debug.Log("Positioning for OB: blue is in front");        }
-        else if (objectIndex[2] == 0)        {            Debug.Log("Positioning for OB: blue is in back\nY, Y");            pieces = rotateBigCube.fullRotation(0, 90, 0);            pieces = rotateBigCube.fullRotation(0, 90, 0);        }
-        else if (objectIndex[0] == 0)        {            Debug.Log("Positioning for OB: blue is in left\nY'");            pieces = rotateBigCube.fullRotation(0, -90, 0);        }
-        else if (objectIndex[0] == 2)        {            Debug.Log("Positioning for OB: blue is in right\nY");            pieces = rotateBigCube.fullRotation(0, 90, 0);        }
-        //PIECE: OB ((((make sure cube s faceing blue side
-        objectIndex = searching(OB, pieces);
-        //on center layer
-        if (objectIndex[1] == 1)
-        {
-            if (objectIndex[0] == 0 && objectIndex[2] == 2)//RB
-            {
-                if (OB_O.transform.position.x > OB_B.transform.position.x)                {                    Debug.Log("The OB piece is located at RB with blue adj blue and orange adj red\nRALG, Y, LALG, Y', Y', RALG, Y, LALG");                    //RALG, Y, LALG, Y', Y', RALG, Y, LALG                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                }                else                {                    Debug.Log("The OB piece is located at RB with orange adj blue and blue adj red\nRALG, Y, LALG, Y', U, LALG, Y', RALG");                    //RALG, Y, LALG, Y', U, LALG, Y', RALG                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }            }
-            else if (objectIndex[0] == 0 && objectIndex[2] == 0)//OB
-            {
-                if (OB_B.transform.position.x > OB_O.transform.position.x)                {                    Debug.Log("The OB piece is correct");                }                else                {                    Debug.Log("The OB piece is in the correct spot but incorrectly positioned\nLALG, Y', RALG, Y, U, LALG, Y', RALG");                    //LALG, Y', RALG, Y, U, LALG, Y', RALG                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.fullRotation(0, 90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.fullRotation(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.U(0, -90, 0);                }
-            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-        }
-        else if (objectIndex[1] == 2) //its in the top
-        {            if (objectIndex[0] == 0) //YB            {                if ()                {                                    }                else                {                                    }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }
-        /*
-        //PIECE: OG
-        objectIndex = searching(OG, pieces);
-        //on center layer
-        if (objectIndex[1] == 1)
-        {
-            if (objectIndex[0] == 0 && objectIndex[2] == 2)
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            //IN THE OB spot
-            else if (objectIndex[0] == 0 && objectIndex[2] == 0)
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-        }
-        else if (objectIndex[1] == 2) //its in the top
-        {            if (objectIndex[0] == 0) //YB            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }
-
-        //PIECE: RG
-        objectIndex = searching(RG, pieces);
-        //on center layer
-        if (objectIndex[1] == 1)
-        {
-            if (objectIndex[0] == 0 && objectIndex[2] == 2) //RB
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            //IN THE OB spot
-            else if (objectIndex[0] == 0 && objectIndex[2] == 0)
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-            else if (objectIndex[0] == 2 && objectIndex[2] == 2) // RG
-            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }
-        }
-        else if (objectIndex[1] == 2) //its in the top
-        {            if (objectIndex[0] == 0) //YB            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 0) //YO            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[0] == 2) //YG            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }            else if (objectIndex[2] == 2) //YR            {                if ()                {                    Debug.Log("");                }                else                {                    Debug.Log("");                }            }        }*/
-
         return pieces;
     }
 }

@@ -780,4 +780,6 @@ public class RotateBigCube : MonoBehaviour
         }
         return pieces;
     }
+    public List<List<List<GameObject>>> RALG()    {        pieces = R(0, 0, -90);        pieces = U(0, 90, 0);        pieces = R(0, 0, 90);        pieces = U(0, -90, 0);        return pieces;    }
+    public List<List<List<GameObject>>> LALG()    {        pieces = L(0, 0, -90);        pieces = U(0, -90, 0);        pieces = L(0, 0, 90);        pieces = U(0, 90, 0);        return pieces;    }
 }
