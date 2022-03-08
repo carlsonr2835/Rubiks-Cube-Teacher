@@ -307,7 +307,7 @@ public class SolveSecondLayer : MonoBehaviour
         {
             if (objectIndex[0] == 0) //YB
             {
-                if (RB_B.transform.position.y > RB_R.transform.position.y)
+                if (RB_B.transform.position.y < RB_R.transform.position.y)
                 {
                     Debug.Log("The RB piece is in the top YB spot with red adj blue\nU', U', LALG, Y', RALG");
                     //U', U', LALG, Y', RALG
@@ -539,7 +539,7 @@ public class SolveSecondLayer : MonoBehaviour
         {
             if (objectIndex[0] == 1 && objectIndex[2] == 2) //YB
             {
-                if (OB_O.transform.position.y > OB_B.transform.position.y)
+                if (OB_O.transform.position.y < OB_B.transform.position.y)
                 {
                     Debug.Log("The OB piece is in the top YB spot with orange facing up\nU', LALG, Y', RALG");
                     //U', LALG, Y', RALG
@@ -687,7 +687,7 @@ public class SolveSecondLayer : MonoBehaviour
             }
             else if (objectIndex[0] == 0 && objectIndex[2] == 2) //OG
             {
-                if (OG_O.transform.position.z > OG_G.transform.position.z)
+                if (OG_O.transform.position.z < OG_G.transform.position.z)
                 {
                     Debug.Log("The OG piece is correct");
                 }
@@ -1039,7 +1039,7 @@ public class SolveSecondLayer : MonoBehaviour
             }
             else if (objectIndex[0] == 2) //YG
             {
-                if (RG_G.transform.position.y > RG_R.transform.position.y)
+                if (RG_G.transform.position.y < RG_R.transform.position.y)
                 {
                     Debug.Log("The RG piece is in the top YG place with green facing up\nU, U, RALG, Y, LALG");
                     //U, U, RALG, Y, LALG
