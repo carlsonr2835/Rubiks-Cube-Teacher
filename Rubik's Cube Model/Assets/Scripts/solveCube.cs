@@ -563,7 +563,7 @@ public class solveCube : MonoBehaviour
                 }
             }
         }
-        /*//WG
+        //WG
         objectIndex = searching(WG, pieces);
         if (objectIndex[0] == 0 && objectIndex[1] == 2 && objectIndex[2] == 1)
         {
@@ -2565,7 +2565,7 @@ public class solveCube : MonoBehaviour
                     pieces = rotateBigCube.F(-90, 0, 0);
                 }
             }
-        }*/
+        }
         return pieces;
     }
 }

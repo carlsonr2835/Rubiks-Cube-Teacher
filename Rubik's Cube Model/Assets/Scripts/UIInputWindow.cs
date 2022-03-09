@@ -11,6 +11,7 @@ public class UIInputWindow : MonoBehaviour
     ReadCube readCube;
     solveCube solveC;
     SolveSecondLayer solveSecondLayer;
+    SolveThird solveThird;
     ScrambleCube scrambleCube;
     public List<List<List<GameObject>>> pieces = new List<List<List<GameObject>>>();
 
@@ -46,7 +47,8 @@ public class UIInputWindow : MonoBehaviour
         rotateBigCube = GameObject.Find("CubeHolder").GetComponent<RotateBigCube>();
         solveC = GameObject.Find("CubeHolder").GetComponent<solveCube>();
         scrambleCube = GameObject.Find("CubeHolder").GetComponent<ScrambleCube>();
-        solveSecondLayer = GameObject.Find("CubeHolder").GetComponent<SolveSecondLayer>(); //must be added to cube
+        solveSecondLayer = GameObject.Find("CubeHolder").GetComponent<SolveSecondLayer>();
+        solveThird = GameObject.Find("CubeHolder").GetComponent<SolveThird>();
         //readCube.ReadState();
         /*List<GameObject> side = new List<GameObject>()
         {
@@ -247,8 +249,9 @@ public class UIInputWindow : MonoBehaviour
         {
             //pieces = solveC.centerPieces(pieces);
             pieces = solveC.whiteCross(pieces);
-            //pieces = solveC.whiteCorners(pieces);
-            //pieces = solveSecondLayer.secondLayer(pieces);
+            pieces = solveC.whiteCorners(pieces);
+            pieces = solveSecondLayer.secondLayer(pieces);
+            pieces = solveThird.yellowCross(pieces);
         }
         else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")
         {

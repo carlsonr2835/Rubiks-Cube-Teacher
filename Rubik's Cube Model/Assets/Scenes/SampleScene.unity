@@ -2056,6 +2056,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530139251}
   m_CullTransparentMesh: 1
+--- !u!1 &548780381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8667567601135343606, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
+  m_PrefabInstance: {fileID: 1548698643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &550269963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,6 +3980,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980039711}
   m_CullTransparentMesh: 1
+--- !u!1 &981110170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8667567601088787122, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
+  m_PrefabInstance: {fileID: 1548698643}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &985105314 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8667567600152468143, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
@@ -6460,6 +6470,7 @@ GameObject:
   - component: {fileID: 1645988877}
   - component: {fileID: 1645988878}
   - component: {fileID: 1645988879}
+  - component: {fileID: 1645988880}
   m_Layer: 0
   m_Name: CubeHolder
   m_TagString: Untagged
@@ -6634,7 +6645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb1e8939555e47e89e069abb74ac723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cube: {fileID: 454826745}
+  Cube: {fileID: 1645988874}
   YO: {fileID: 1618711655}
   YO_Y: {fileID: 1033369745}
   YO_O: {fileID: 876402916}
@@ -6710,6 +6721,94 @@ MonoBehaviour:
   WR: {fileID: 2031153873}
   WR_W: {fileID: 719895285}
   WR_R: {fileID: 2140281549}
+--- !u!114 &1645988880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645988874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f864f8dcdc4d04511b01c624fec8f68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cube: {fileID: 1645988874}
+  YO: {fileID: 1618711655}
+  YO_Y: {fileID: 1033369745}
+  YO_O: {fileID: 876402916}
+  YOG: {fileID: 1310045948}
+  YOG_Y: {fileID: 899863233}
+  YOG_O: {fileID: 977383979}
+  YOG_G: {fileID: 804563455}
+  YOB: {fileID: 1799262610}
+  YOB_Y: {fileID: 1740260671}
+  YOB_O: {fileID: 1353756835}
+  YOB_B: {fileID: 789559633}
+  Y: {fileID: 1288513009}
+  YG: {fileID: 1443609930}
+  YG_Y: {fileID: 210481914}
+  YG_G: {fileID: 2030397179}
+  YB: {fileID: 1024876345}
+  YB_Y: {fileID: 703160304}
+  YB_B: {fileID: 1019156043}
+  YR: {fileID: 462968784}
+  YR_Y: {fileID: 981110170}
+  YR_R: {fileID: 548780381}
+  YRG: {fileID: 1644534429}
+  YRG_Y: {fileID: 865201112}
+  YRG_R: {fileID: 1541505453}
+  YRG_G: {fileID: 1440740164}
+  YRB: {fileID: 83014054}
+  YRB_Y: {fileID: 323417695}
+  YRB_R: {fileID: 974941789}
+  YRB_B: {fileID: 848679952}
+  O: {fileID: 805943365}
+  OG: {fileID: 1971829748}
+  OG_O: {fileID: 1185596621}
+  OG_G: {fileID: 1659595577}
+  OB: {fileID: 676186094}
+  OB_O: {fileID: 279786260}
+  OB_B: {fileID: 1781634706}
+  B: {fileID: 238478714}
+  G: {fileID: 2094736692}
+  Middle: {fileID: 354147428}
+  RB: {fileID: 187187943}
+  RB_R: {fileID: 617401570}
+  RB_B: {fileID: 1884624731}
+  RG: {fileID: 947074023}
+  RG_R: {fileID: 14279597}
+  RG_G: {fileID: 755898987}
+  R: {fileID: 311204438}
+  W: {fileID: 817431719}
+  WO: {fileID: 1863986783}
+  WO_W: {fileID: 1561013059}
+  WO_O: {fileID: 1864997444}
+  WOG: {fileID: 352976883}
+  WOG_W: {fileID: 16408002}
+  WOG_O: {fileID: 1127356462}
+  WOG_G: {fileID: 769532789}
+  WOB: {fileID: 1872713593}
+  WOB_W: {fileID: 845262509}
+  WOB_O: {fileID: 1776477828}
+  WOB_B: {fileID: 1740115029}
+  WB: {fileID: 1843140456}
+  WB_W: {fileID: 219101345}
+  WB_B: {fileID: 1937023829}
+  WG: {fileID: 1597498540}
+  WG_W: {fileID: 512767141}
+  WG_G: {fileID: 678973627}
+  WRB: {fileID: 219876297}
+  WRB_W: {fileID: 477055830}
+  WRB_R: {fileID: 1003908414}
+  WRB_B: {fileID: 1197171724}
+  WRG: {fileID: 1706200368}
+  WRG_W: {fileID: 438000789}
+  WRG_R: {fileID: 360939758}
+  WRG_G: {fileID: 105618310}
+  WR: {fileID: 2031153873}
+  WR_W: {fileID: 169371346}
+  WR_R: {fileID: 1734981955}
 --- !u!1 &1656930971
 GameObject:
   m_ObjectHideFlags: 0
@@ -7233,6 +7332,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8667567600517821582, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
   m_PrefabInstance: {fileID: 1057221736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1740260671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8667567601088787122, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
+  m_PrefabInstance: {fileID: 2009235800}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776477828 stripped
 GameObject:
