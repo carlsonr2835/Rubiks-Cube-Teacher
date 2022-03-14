@@ -234,7 +234,11 @@ public class solveCube : MonoBehaviour
     }
     public List<List<List<GameObject>>> centerPieces(List<List<List<GameObject>>> pieces)
     {
-        List<int> objectIndex = new List<int>();        //CENTER PIECES        //white yellow        objectIndex = searching(W, pieces); //find where top is
+        List<int> objectIndex = new List<int>();
+        //CENTER PIECES
+        //white yellow
+
+        objectIndex = searching(W, pieces); //find where top is
         Debug.Log(objectIndex[0] + objectIndex[1] + objectIndex[2]);
         if (objectIndex[1] == 2) //correct
         {
@@ -942,9 +946,9 @@ public class solveCube : MonoBehaviour
                         pieces = rotateBigCube.F(-90, 0, 0);
                     }
                 }
-                else if (objectIndex[0] == 0)
+                else if (objectIndex[0] == 0) //checked
                 {
-                    if (WR_R.transform.position.x > WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face\nF");
                         //F
@@ -1677,7 +1681,7 @@ public class solveCube : MonoBehaviour
                 {
                     Debug.Log("The WOB corner is correct");
                 }
-                else if (WOB_B.transform.position.y > WOB_W.transform.position.y) //the blue side is facing up
+                else if (WOB_B.transform.position.y > WOB_O.transform.position.y) //the blue side is facing up
                 {
                     Debug.Log("The WOB corner is correctly positioned but incorrectly oriented (blue facing up)\nR, D', R', D, R, D', R'");
                     //R, D', R', D, R, D', R'
@@ -2125,7 +2129,7 @@ public class solveCube : MonoBehaviour
         {
             if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
             {
-                if (WOG_W.transform.position.y < WOG_G.transform.position.y) //white down
+                if (WOG_W.transform.position.y < WOG_G.transform.position.y && WOG_W.transform.position.y < WOG_O.transform.position.y) //white down
                 {
                     Debug.Log("The WOG corner is in the bottom layer YBR corner (white facing down)\nD', D', B, D, D, B', D', D', L', D, L ");
                     //D', D', B, D, D, B', D', D', L', D, L 
@@ -2141,7 +2145,7 @@ public class solveCube : MonoBehaviour
                     pieces = rotateBigCube.D(0, 90, 0);
                     pieces = rotateBigCube.L(0, 0, 90);
                 }
-                else if (WOG_G.transform.position.y < WOG_O.transform.position.y) //green down
+                else if (WOG_G.transform.position.y < WOG_O.transform.position.y && WOG_G.transform.position.y < WOG_W.transform.position.y) //green down
                 {
                     Debug.Log("The WOG corner is in the bottom layer YBR corner (green facing down)\nD', B, D', B'");
                     //D, B, D', B'

@@ -171,5 +171,162 @@ public class SolveThird : MonoBehaviour
         }
         return objectIndex;
     }
-    public List<List<List<GameObject>>> yellowCross (List<List<List<GameObject>>> pieces)    {        //search for each and position and orientation to make a note        List<int> objectIndex = new List<int>();        //<VISUAL WAY OF CHECKING>        List<List<bool>> crossPosition = new List<List<bool>>();        for (int i = 0; i < 3; i++)        {            List<bool> temp = new List<bool>();            for (int j = 0; j < 3; j++)            {                temp.Add(false);            }            crossPosition.Add(temp);        }        //YR piece        objectIndex = searching(YR, pieces);        if (YR_Y.transform.position.y > YR_R.transform.position.y)        {            if (objectIndex[0] == 0)            {                crossPosition[0][1] = true;            }            else if (objectIndex[0] == 2)            {                crossPosition[2][1] = true;            }            else if (objectIndex[2] == 0)            {                crossPosition[1][0] = true;            }            else if (objectIndex[2] == 2)            {                crossPosition[1][2] = true;            }        }        objectIndex = searching(YO, pieces);        if (YO_Y.transform.position.y > YO_O.transform.position.y)        {            if (objectIndex[0] == 0)            {                crossPosition[0][1] = true;            }            else if (objectIndex[0] == 2)            {                crossPosition[2][1] = true;            }            else if (objectIndex[2] == 0)            {                crossPosition[1][0] = true;            }            else if (objectIndex[2] == 2)            {                crossPosition[1][2] = true;            }        }        objectIndex = searching(YB, pieces);        if (YB_Y.transform.position.y > YB_B.transform.position.y)        {            if (objectIndex[0] == 0)            {                crossPosition[0][1] = true;            }            else if (objectIndex[0] == 2)            {                crossPosition[2][1] = true;            }            else if (objectIndex[2] == 0)            {                crossPosition[1][0] = true;            }            else if (objectIndex[2] == 2)            {                crossPosition[1][2] = true;            }        }        objectIndex = searching(YG, pieces);        if (YG_Y.transform.position.y > YG_G.transform.position.y)        {            if (objectIndex[0] == 0)            {                crossPosition[0][1] = true;            }            else if (objectIndex[0] == 2)            {                crossPosition[2][1] = true;            }            else if (objectIndex[2] == 0)            {                crossPosition[1][0] = true;            }            else if (objectIndex[2] == 2)            {                crossPosition[1][2] = true;            }        }        if (crossPosition[0][1] && crossPosition[2][1] && crossPosition[1][0] && crossPosition[1][2]) //all right        {            Debug.Log("The third layer cross is already solved");        }        else if (crossPosition[0][1] && crossPosition[2][1]) //horz line        {            Debug.Log("The third layer cross is oriented in the line formation (horizontal)"); //being accessed wrong times            //F, RALG, F'        }        else if (crossPosition[1][0] && crossPosition[1][2]) //vert line        {            Debug.Log("The third layer cross is oriented in the line formation (vertical)");            //Y, Y, F, RALG, F'        }        else if (crossPosition[1][2] && crossPosition[2][1]) //correct angle .-        {            Debug.Log("The third layer cross is oriented in the angle formation (correct .-)"); //working so far            //f, RALG, f'        }        else if (crossPosition[1][2] && crossPosition[0][1]) //angle -.        {            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -.)");            //Y', f, RALG, f'        }        else if (crossPosition[0][1] && crossPosition[1][0]) //angle -^        {            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -^)");            //Y', Y', f, RALG, f'        }        else if (crossPosition[0][1] && crossPosition[2][1]) //angle ^-        {            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect ^-)"); //not being accessed in right time            //Y, f, RALG, f'        }        else if (!crossPosition[0][1] && !crossPosition[2][1] && !crossPosition[1][0] && !crossPosition[1][2]) //dot        {            Debug.Log("The third layer cross is oriented in the dot formation");            //F, RALG, F', f, RALG, f'        }        else //error        {            Debug.Log("Error in code: no possible cross cases");        }        return pieces;    }
+    public List<List<List<GameObject>>> yellowCross(List<List<List<GameObject>>> pieces)
+    {
+        //search for each and position and orientation to make a note
+        List<int> objectIndex = new List<int>();
+
+        //<VISUAL WAY OF CHECKING>
+        List<List<bool>> crossPosition = new List<List<bool>>();
+        for (int i = 0; i < 3; i++)
+        {
+            List<bool> temp = new List<bool>();
+            for (int j = 0; j < 3; j++)
+            {
+                temp.Add(false);
+            }
+            crossPosition.Add(temp);
+        }
+        //YR piece
+        objectIndex = searching(YR, pieces);
+        if (YR_Y.transform.position.y > YR_R.transform.position.y)
+        {
+            if (objectIndex[0] == 0)
+            {
+                Debug.Log("The YR piece is located at x = 0, z = 1");
+                crossPosition[0][1] = true;
+            }
+            else if (objectIndex[0] == 2)
+            {
+                Debug.Log("The YR piece is located at x = 2, z = 1");
+                crossPosition[2][1] = true;
+            }
+            else if (objectIndex[2] == 0)
+            {
+                Debug.Log("The YR piece is located at x = 1, z = 0");
+                crossPosition[1][0] = true;
+            }
+            else if (objectIndex[2] == 2)
+            {
+                Debug.Log("The YR piece is located at x = 1, z = 2");
+                crossPosition[1][2] = true;
+            }
+        }
+        objectIndex = searching(YO, pieces);
+        if (YO_Y.transform.position.y > YO_O.transform.position.y)
+        {
+            if (objectIndex[0] == 0)
+            {
+                Debug.Log("The YO piece is located at x = 0, z = 1");
+                crossPosition[0][1] = true;
+            }
+            else if (objectIndex[0] == 2)
+            {
+                Debug.Log("The YO piece is located at x = 2, z = 1");
+                crossPosition[2][1] = true;
+            }
+            else if (objectIndex[2] == 0)
+            {
+                Debug.Log("The YO piece is located at x = 1, z = 0");
+                crossPosition[1][0] = true;
+            }
+            else if (objectIndex[2] == 2)
+            {
+                Debug.Log("The YO piece is located at x = 1, z = 2");
+                crossPosition[1][2] = true;
+            }
+        }
+        objectIndex = searching(YB, pieces);
+        if (YB_Y.transform.position.y > YB_B.transform.position.y)
+        {
+            if (objectIndex[0] == 0)
+            {
+                Debug.Log("The YB piece is located at x = 0, z = 1");
+                crossPosition[0][1] = true;
+            }
+            else if (objectIndex[0] == 2)
+            {
+                Debug.Log("The YB piece is located at x = 2, z = 1");
+                crossPosition[2][1] = true;
+            }
+            else if (objectIndex[2] == 0)
+            {
+                Debug.Log("The YB piece is located at x = 1, z = 0");
+                crossPosition[1][0] = true;
+            }
+            else if (objectIndex[2] == 2)
+            {
+                Debug.Log("The YB piece is located at x = 1, z = 2");
+                crossPosition[1][2] = true;
+            }
+        }
+        objectIndex = searching(YG, pieces);
+        if (YG_Y.transform.position.y > YG_G.transform.position.y)
+        {
+            if (objectIndex[0] == 0)
+            {
+                Debug.Log("The YG piece is located at x = 0, z = 1");
+                crossPosition[0][1] = true;
+            }
+            else if (objectIndex[0] == 2)
+            {
+                Debug.Log("The YG piece is located at x = 2, z = 1");
+                crossPosition[2][1] = true;
+            }
+            else if (objectIndex[2] == 0)
+            {
+                Debug.Log("The YG piece is located at x = 1, z = 0");
+                crossPosition[1][0] = true;
+            }
+            else if (objectIndex[2] == 2)
+            {
+                Debug.Log("The YG piece is located at x = 1, z = 2");
+                crossPosition[1][2] = true;
+            }
+        }
+        if (crossPosition[0][1] && crossPosition[2][1] && crossPosition[1][0] && crossPosition[1][2]) //all right
+        {
+            Debug.Log("The third layer cross is already solved");
+        }
+        else if (crossPosition[0][1] && crossPosition[2][1]) //horz line
+        {
+            Debug.Log("The third layer cross is oriented in the line formation (horizontal)"); //being accessed wrong times
+            //F, RALG, F'
+        }
+        else if (crossPosition[1][0] && crossPosition[1][2]) //vert line
+        {
+            Debug.Log("The third layer cross is oriented in the line formation (vertical)");
+            //Y, Y, F, RALG, F'
+        }
+        else if (crossPosition[1][2] && crossPosition[2][1]) //correct angle .-
+        {
+            Debug.Log("The third layer cross is oriented in the angle formation (correct .-)"); //working so far
+            //f, RALG, f'
+        }
+        else if (crossPosition[1][2] && crossPosition[0][1]) //angle -.
+        {
+            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -.)");
+            //Y', f, RALG, f'
+        }
+        else if (crossPosition[0][1] && crossPosition[1][0]) //angle -^
+        {
+            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -^)");
+            //Y', Y', f, RALG, f'
+        }
+        else if (crossPosition[0][1] && crossPosition[2][1]) //angle ^-
+        {
+            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect ^-)"); //not being accessed in right time
+            //Y, f, RALG, f'
+        }
+        else if (!crossPosition[0][1] && !crossPosition[2][1] && !crossPosition[1][0] && !crossPosition[1][2]) //dot
+        {
+            Debug.Log("The third layer cross is oriented in the dot formation");
+            //F, RALG, F', f, RALG, f'
+        }
+        else //error
+        {
+            Debug.Log("Error in code: no possible cross cases");
+        }
+        return pieces;
+    }
 }
