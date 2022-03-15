@@ -210,23 +210,9 @@ public class SolveSecondLayer : MonoBehaviour
             //IN THE OB spot
             else if (objectIndex[0] == 0 && objectIndex[2] == 0)
             {
-                if (RB_B.transform.position.x < RB_R.transform.position.x)
+                if (RB_B.transform.position.x > RB_R.transform.position.x)
                 {
-                    Debug.Log("The RB piece is positioned in the OB spot with blue adj to blue and red adj orange\nY', LALG, Y', RALG, U', Y, RALG, Y, LALG");
-                    //Y', LALG, Y', RALG, U', Y, RALG, Y, LALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();
-                }
-                else
-                {
-                    Debug.Log("The RB piece is positioned in the OB spot with red adj to blue and blue adj orange\nY', LALG, Y', RALG, Y, Y, LALG, Y', RALG");
+                    Debug.Log("The RB piece is positioned in the OB spot with red adj to blue and blue adj orange\nY', LALG, Y', RALG, Y, Y, LALG, Y', RALG"); //not being accessed properly, accessing upper case
                     //Y', LALG, Y', RALG, Y, Y, LALG, Y', RALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.LALG();
@@ -237,7 +223,22 @@ public class SolveSecondLayer : MonoBehaviour
                     pieces = rotateBigCube.LALG();
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.RALG();
+                }                else if (RB_B.transform.position.x < RB_R.transform.position.x) //this is the only one being accessed
+                {
+                    Debug.Log("The RB piece is positioned in the OB spot with blue adj to blue and red adj orange\nY', LALG, Y', RALG, Y, Y, U, LALG, Y', RALG"); //checked
+                    //Y', LALG, Y', RALG, Y, Y, U, LALG, Y', RALG
+                    pieces = rotateBigCube.fullRotation(0, -90, 0);
+                    pieces = rotateBigCube.LALG();
+                    pieces = rotateBigCube.fullRotation(0, -90, 0);
+                    pieces = rotateBigCube.RALG();
+                    pieces = rotateBigCube.fullRotation(0, 90, 0);
+                    pieces = rotateBigCube.fullRotation(0, 90, 0);
+                    pieces = rotateBigCube.U(0, 90, 0);
+                    pieces = rotateBigCube.LALG();
+                    pieces = rotateBigCube.fullRotation(0, -90, 0);
+                    pieces = rotateBigCube.RALG();
                 }
+                
             }
             else if (objectIndex[0] == 2 && objectIndex[2] == 0) //OG
             {
@@ -374,7 +375,7 @@ public class SolveSecondLayer : MonoBehaviour
             {
                 if (RB_B.transform.position.y < RB_R.transform.position.y)
                 {
-                    Debug.Log("The RB piece is in the top YR spot with R adj red\nY', U, U, RALG, Y, LALG");
+                    Debug.Log("The RB piece is in the top YR spot with R adj red\nY', U, U, RALG, Y, LALG"); //checked
                     //Y', U, U, RALG, Y, LALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.U(0, 90, 0);
