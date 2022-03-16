@@ -288,12 +288,12 @@ public class SolveThird : MonoBehaviour
         {
             Debug.Log("The third layer cross is already solved");
         }
-        else if (crossPosition[0][1] && crossPosition[2][1]) //horz line
+        else if (crossPosition[0][1] && crossPosition[2][1] && !crossPosition[1][0] && !crossPosition[1][2]) //horz line
         {
             Debug.Log("The third layer cross is oriented in the line formation (horizontal)"); //being accessed wrong times
             //F, RALG, F'
         }
-        else if (crossPosition[1][0] && crossPosition[1][2]) //vert line
+        else if (crossPosition[1][0] && crossPosition[1][2] && !crossPosition[0][1] && !crossPosition[2][1]) //vert line
         {
             Debug.Log("The third layer cross is oriented in the line formation (vertical)");
             //Y, Y, F, RALG, F'
@@ -329,4 +329,33 @@ public class SolveThird : MonoBehaviour
         }
         return pieces;
     }
+    public List<List<List<GameObject>>> positionCorners(List<List<List<GameObject>>> pieces)    {        List<int> objectIndex = new List<int>();
+        objectIndex = searching(B, pieces); //this block is causing issues        /*if (objectIndex[2] == 2)
+        {
+            Debug.Log("Positioning for YRB: blue is in front");
+        }
+        else if (objectIndex[2] == 0)
+        {
+            Debug.Log("Positioning for YRB: blue is in back\nY, Y");
+            pieces = rotateBigCube.fullRotation(0, 90, 0);
+            pieces = rotateBigCube.fullRotation(0, 90, 0);
+        }
+        else if (objectIndex[0] == 0)
+        {
+            Debug.Log("Positioning for YRB: blue is in left\nY'");
+            pieces = rotateBigCube.fullRotation(0, -90, 0);
+        }
+        else if (objectIndex[0] == 2)
+        {
+            Debug.Log("Positioning for YRB: blue is in right\nY");
+            pieces = rotateBigCube.fullRotation(0, 90, 0);
+        }*/        List<List<string>> cornerPosition = new List<List<string>>();
+        for (int i = 0; i < 2; i++)
+        {
+            List<string> temp = new List<string>();
+            for (int j = 0; j < 2; j++)
+            {
+                temp.Add("");
+            }
+            cornerPosition.Add(temp);        }        //YRB        objectIndex = searching(YRB, pieces);        if (objectIndex[0] == 0 && objectIndex[2] == 0)        {            cornerPosition[0][0] = "YRB";        }        else if (objectIndex[0] == 0 && objectIndex[2] == 2)        {            cornerPosition[0][1] = "YRB";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 0)        {            cornerPosition[1][0] = "YRB";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 2)        {            cornerPosition[1][1] = "YRB";        }        objectIndex = searching(YOB, pieces);        if (objectIndex[0] == 0 && objectIndex[2] == 0)        {            cornerPosition[0][0] = "YOB";        }        else if (objectIndex[0] == 0 && objectIndex[2] == 2)        {            cornerPosition[0][1] = "YOB";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 0)        {            cornerPosition[1][0] = "YOB";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 2)        {            cornerPosition[1][1] = "YOB";        }        objectIndex = searching(YOG, pieces);        if (objectIndex[0] == 0 && objectIndex[2] == 0)        {            cornerPosition[0][0] = "YOG";        }        else if (objectIndex[0] == 0 && objectIndex[2] == 2)        {            cornerPosition[0][1] = "YOG";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 0)        {            cornerPosition[1][0] = "YOG";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 2)        {            cornerPosition[1][1] = "YOG";        }        objectIndex = searching(YRG, pieces);        if (objectIndex[0] == 0 && objectIndex[2] == 0)        {            cornerPosition[0][0] = "YRG";        }        else if (objectIndex[0] == 0 && objectIndex[2] == 2)        {            cornerPosition[0][1] = "YRG";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 0)        {            cornerPosition[1][0] = "YRG";        }        else if (objectIndex[0] == 2 && objectIndex[2] == 2)        {            cornerPosition[1][1] = "YRG";        }        //two on left side        if (cornerPosition[0][0] == "YRB" && cornerPosition[0][1] == "YOB")        {            Debug.Log("The YRB and YOB corners are on the left side\nRALG, RALG, RALG, Y, LALG, LALG, LALG");        }        else if (cornerPosition[0][0] == "YOB" && cornerPosition[0][1] == "YOG") {            Debug.Log("The YOB and YOG corners are on the left side\nRALG, RALG, RALG, Y, LALG, LALG, LALG");        }        else if (cornerPosition[0][0] == "YOG" && cornerPosition[0][1] == "YRG")        {            Debug.Log("The YOG and YRG corners are on the left side\nRALG, RALG, RALG, Y, LALG, LALG, LALG");        }        else if (cornerPosition[0][0] == "YRG" && cornerPosition[0][1] == "YRB")        {            Debug.Log("The YRG and YRB corners are on the left side\nRALG, RALG, RALG, Y, LALG, LALG, LALG");        }        //Two on right side        if (cornerPosition[1][0] == "" && cornerPosition[1][1] == "")        {            Debug.Log("The _ and _ corners are on the right side\nY', Y', RALG, RALG, RALG, Y, LALG, LALG, LALG");        }        else if (cornerPosition[1][0] == "" && cornerPosition[1][1] == "")        {            Debug.Log("The _ and _ corners are on the right side\nY', Y', RALG, RALG, RALG, Y, LALG, LALG, LALG");        }        else if (cornerPosition[1][0] == "" && cornerPosition[1][1] == "")        {            Debug.Log("The _ and _ corners are on the right side\nY', Y', RALG, RALG, RALG, Y, LALG, LALG, LALG");        }        else if (cornerPosition[1][0] == "" && cornerPosition[1][1] == "")        {            Debug.Log("The _ and _ corners are on the right side\nY', Y', RALG, RALG, RALG, Y, LALG, LALG, LALG");        }        //angle        //-+        //+-        //angle        //+-        //-+        return pieces;    }
 }

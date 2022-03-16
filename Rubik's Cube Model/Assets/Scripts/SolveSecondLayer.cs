@@ -308,9 +308,9 @@ public class SolveSecondLayer : MonoBehaviour
         {
             if (objectIndex[0] == 0) //YB
             {
-                if (RB_B.transform.position.y < RB_R.transform.position.y)
+                if (RB_B.transform.position.y > RB_R.transform.position.y)
                 {
-                    Debug.Log("The RB piece is in the top YB spot with red adj blue\nU', U', LALG, Y', RALG");
+                    Debug.Log("The RB piece is in the top YB spot with red adj blue\nU', U', LALG, Y', RALG"); //checked
                     //U', U', LALG, Y', RALG
                     pieces = rotateBigCube.U(0, -90, 0);
                     pieces = rotateBigCube.U(0, -90, 0);
@@ -320,7 +320,7 @@ public class SolveSecondLayer : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("The RB piece is in the top YB spot with blue adj blue\nY', U, RALG, Y, LALG");
+                    Debug.Log("The RB piece is in the top YB spot with blue adj blue\nY', U, RALG, Y, LALG"); //checked
                     //Y', U, RALG, Y, LALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.U(0, 90, 0);
@@ -453,7 +453,7 @@ public class SolveSecondLayer : MonoBehaviour
             }
             else if (objectIndex[0] == 0 && objectIndex[2] == 2)//OB //verified
             {
-                if (OB_B.transform.position.x > OB_O.transform.position.x)
+                if (OB_O.transform.position.x > OB_B.transform.position.x) //correct
                 {
                     Debug.Log("The OB piece is correct");
                 }
