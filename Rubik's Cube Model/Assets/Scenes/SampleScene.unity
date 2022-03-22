@@ -6688,6 +6688,7 @@ MonoBehaviour:
   RB: {fileID: 187187943}
   RB_R: {fileID: 2140281549}
   RB_B: {fileID: 1018227875}
+  RB_G: {fileID: 1668038185}
   RG: {fileID: 947074023}
   RG_R: {fileID: 2140281549}
   RG_G: {fileID: 804563455}
@@ -6946,6 +6947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
+--- !u!1 &1668038185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8667567599725845701, guid: 51fac9da5f3bb7e4cad75b2ecee858d9, type: 3}
+  m_PrefabInstance: {fileID: 788688136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1668717335
 PrefabInstance:
   m_ObjectHideFlags: 0

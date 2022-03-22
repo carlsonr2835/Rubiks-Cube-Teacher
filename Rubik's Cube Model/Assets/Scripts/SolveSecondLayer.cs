@@ -48,6 +48,7 @@ public class SolveSecondLayer : MonoBehaviour
     public GameObject RB;
     public GameObject RB_R;
     public GameObject RB_B;
+    public GameObject RB_G; //for correct/incorrect solution
     public GameObject RG;
     public GameObject RG_R;
     public GameObject RG_G;
@@ -186,14 +187,15 @@ public class SolveSecondLayer : MonoBehaviour
             //CORRECT POSITION
             if (objectIndex[0] == 0 && objectIndex[2] == 2)
             {
-                if (RB_B.transform.position.x > RB_R.transform.position.x)
+                //red is in the front
+                if (RB_B.transform.position.x > RB_G.transform.position.x)
                 {
                     //the piece is correct
                     Debug.Log("The RB piece is correct"); //checked
                 }
-                else
+                else if (RB_B.transform.position.x == RB_G.transform.position.x)
                 {
-                    Debug.Log("the RB piece is oriented incorrectly\nL', U', L, U (LALG), Y', R, U, R', U', (RALG), Y (back), U', U', L', U', L, U (LALG), Y', R, U, R', U' (RALG)"); //checked
+                    Debug.Log("the RB piece is oriented incorrectly\nLALG, Y', RALG, Y, U', U', LALG, Y', RALG"); //checked
                     //the piece is oriented incorrectly
                     //L', U', L, U(LALG), Y', R, U, R' U', (RALG), Y (back), U', U', L', U', L, U (LALG), Y', R, U, R', U'(RALG)
                     pieces = rotateBigCube.LALG();
