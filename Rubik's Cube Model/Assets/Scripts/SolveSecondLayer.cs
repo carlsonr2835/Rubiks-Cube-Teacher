@@ -48,7 +48,6 @@ public class SolveSecondLayer : MonoBehaviour
     public GameObject RB;
     public GameObject RB_R;
     public GameObject RB_B;
-    public GameObject RB_G; //for correct/incorrect solution
     public GameObject RG;
     public GameObject RG_R;
     public GameObject RG_G;
@@ -188,12 +187,12 @@ public class SolveSecondLayer : MonoBehaviour
             if (objectIndex[0] == 0 && objectIndex[2] == 2)
             {
                 //red is in the front
-                if (RB_B.transform.position.x > RB_G.transform.position.x)
+                if (RB_B.transform.position.z > RB_R.transform.position.z)
                 {
                     //the piece is correct
                     Debug.Log("The RB piece is correct"); //checked
                 }
-                else if (RB_B.transform.position.x == RB_G.transform.position.x)
+                else if (RB_B.transform.position.z < RB_R.transform.position.z)
                 {
                     Debug.Log("the RB piece is oriented incorrectly\nLALG, Y', RALG, Y, U', U', LALG, Y', RALG"); //checked
                     //the piece is oriented incorrectly
@@ -455,11 +454,11 @@ public class SolveSecondLayer : MonoBehaviour
             }
             else if (objectIndex[0] == 0 && objectIndex[2] == 2)//OB //verified
             {
-                if (OB_O.transform.position.x > OB_B.transform.position.x) //correct
+                if (OB_O.transform.position.z > OB_B.transform.position.z)
                 {
                     Debug.Log("The OB piece is correct");
                 }
-                else
+                else if (OB_O.transform.position.z < OB_B.transform.position.z)
                 {
                     Debug.Log("The OB piece is in the correct spot but incorrectly positioned\nLALG, Y', RALG, Y, U, U, LALG, Y', RALG"); //correct
                     //LALG, Y', RALG, Y, U, U, LALG, Y', RALG
@@ -695,7 +694,7 @@ public class SolveSecondLayer : MonoBehaviour
                 {
                     Debug.Log("The OG piece is correct");
                 }
-                else
+                else if (OG_O.transform.position.z < OG_G.transform.position.z)
                 {
                     Debug.Log("The OG piece is correctly placed but incorrectly positioned\nLALG, Y', RALG, Y, U, U, LALG, Y', RALG");
                     //LALG, Y', RALG, Y, U, U, LALG, Y', RALG
