@@ -397,7 +397,7 @@ public class SolveSecondLayer : MonoBehaviour
                 }
             }
         }
-        objectIndex = searching(B, pieces); //this block is causing issues
+        /*objectIndex = searching(B, pieces); //this block is causing issues
         if (objectIndex[2] == 2)
         {
             Debug.Log("Positioning for OB: blue is in front");
@@ -1088,7 +1088,7 @@ public class SolveSecondLayer : MonoBehaviour
                     pieces = rotateBigCube.RALG();
                 }
             }
-        }
+        }*/
         return pieces;
     }
 }
