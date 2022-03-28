@@ -194,19 +194,10 @@ public class SolveSecondLayer : MonoBehaviour
                 }
                 else if (RB_B.transform.position.z < RB_R.transform.position.z)
                 {
-                    Debug.Log("the RB piece is oriented incorrectly\nLALG, Y', RALG, Y, U', U', LALG, Y', RALG"); //checked
+                    Debug.Log("the RB piece is oriented incorrectly\nLALG RALG (red), U, LALG RALG (red)\nL’, U’, L, U, F, U, F’, U’, U, U, L’, U’, L, U, F, U, F’, U’"); //checked
                     //the piece is oriented incorrectly
-                    //L', U', L, U(LALG), Y', R, U, R' U', (RALG), Y (back), U', U', L', U', L, U (LALG), Y', R, U, R', U'(RALG)
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();
-                }
+                    //LALG RALG (red), U, U, LALG RALG (red)
+                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.U(0, -90, 0);//                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.L(0, 0, -90);//                    pieces = rotateBigCube.U(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.U(0, 90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.U(0, -90, 0);                    /*//L', U', L, U(LALG), Y', R, U, R' U', (RALG), Y (back), U', U', L', U', L, U (LALG), Y', R, U, R', U'(RALG)                        //LALG, Y', RALG, Y, U', U', LALG, Y', RALG                        pieces = rotateBigCube.LALG();                        pieces = rotateBigCube.fullRotation(0, -90, 0);                        pieces = rotateBigCube.RALG();                        pieces = rotateBigCube.fullRotation(0, 90, 0);                        pieces = rotateBigCube.U(0, -90, 0);                        pieces = rotateBigCube.U(0, -90, 0);                        pieces = rotateBigCube.LALG();                        pieces = rotateBigCube.fullRotation(0, -90, 0);                        pieces = rotateBigCube.RALG();*/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
             }
             //IN THE OB spot
             else if (objectIndex[0] == 0 && objectIndex[2] == 0)
