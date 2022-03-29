@@ -1527,7 +1527,7 @@ public class solveCube : MonoBehaviour
         {
             if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
             {
-                if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down
+                if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down (may be broken)
                 {
                     Debug.Log("The WRB corner is in the bottom layer YBR corner (white facing down)\nR', D', D', R, D, D, F, D', F'");
                     //R', D', D', R, D, D, F, D', F'
@@ -1785,7 +1785,7 @@ public class solveCube : MonoBehaviour
             }
             else if (objectIndex[0] == 0 && objectIndex[2] == 0) //the piece is in the top but in the green orange corner
             {
-                if (WOB_W.transform.position.y > WOB_B.transform.position.y) //white facing up
+                if (WOB_W.transform.position.y > WOB_B.transform.position.y) //white facing up (this may be somewhat broken)
                 {
                     Debug.Log("The WOB corner is incorrectly positioned at WGO (white facing up)\nL, D, L', D, D, R, D', R'");
                     //L, D, L', D, D, R, D', R'
