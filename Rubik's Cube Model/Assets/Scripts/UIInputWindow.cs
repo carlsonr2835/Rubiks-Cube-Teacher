@@ -250,7 +250,7 @@ public class UIInputWindow : MonoBehaviour
             //pieces = solveC.centerPieces(pieces);
             pieces = solveC.whiteCross(pieces);
             pieces = solveC.whiteCorners(pieces);
-            //pieces = solveSecondLayer.secondLayer(pieces);
+            pieces = solveSecondLayer.secondLayer(pieces);
             //pieces = solveThird.yellowCross(pieces);
         }
         else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")

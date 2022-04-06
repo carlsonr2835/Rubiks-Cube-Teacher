@@ -948,7 +948,7 @@ public class solveCube : MonoBehaviour
                 }
                 else if (objectIndex[0] == 0) //checked
                 {
-                    if (WR_R.transform.position.x < WR_W.transform.position.z) //if the position is correct
+                    if (WR_R.transform.position.x < WR_W.transform.position.x) //if the position is correct
                     {
                         Debug.Log("The WR piece is correctly oriented in the second layer adjacent to the red face and along the green face\nF");
                         //F
@@ -1523,9 +1523,9 @@ public class solveCube : MonoBehaviour
             }
         }
         //bottom layer
-        else if (objectIndex[1] == 0)
+        else if (objectIndex[1] == 0)    
         {
-            if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue
+            if (objectIndex[0] == 2 && objectIndex[2] == 2) //bottom red blue               //THERES AN ISSUE HERE WITH ORIENTATION
             {
                 if (WRB_W.transform.position.y < WRB_R.transform.position.y) //white down (may be broken)
                 {
