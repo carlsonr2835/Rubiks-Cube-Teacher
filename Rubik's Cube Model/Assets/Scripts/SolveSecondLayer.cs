@@ -402,8 +402,8 @@ public class SolveSecondLayer : MonoBehaviour
             {
                 if (OB_O.transform.position.x > OB_B.transform.position.x)
                 {
-                    Debug.Log("The OB piece is located at RB with blue adj blue and orange adj red\nRALG, Y, LALG, Y', Y', RALG, Y, LALG");
-                    //(red) LALG RALG, D', (blue) LALG RALG
+                    Debug.Log("The OB piece is located at RB with blue adj blue and orange adj red\n(red) LALG RALG, D', (blue) LALG RALG");                    //(red) LALG RALG, D', (blue) LALG RALG                    //(red) LALG: RALG: R', D', R, D, F, D, F', D'                     pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);                    //(blue) LALG RALG: B', D', B, D, R, D, R', D'                     pieces = rotateBigCube.B(-90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.B(90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);
 
                     /*//RALG, Y, LALG, Y', Y', RALG, Y, LALG
                     pieces = rotateBigCube.RALG();
@@ -417,19 +417,7 @@ public class SolveSecondLayer : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("The OB piece is located at RB with orange adj blue and blue adj red\nRALG, Y, LALG, Y', U, LALG, Y', RALG");
-                    //(red) LALG RALG, D, D, (orange) RALG LALG
-
-                    /*//RALG, Y, LALG, Y', U, LALG, Y', RALG
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
-                }
+                    Debug.Log("The OB piece is located at RB with orange adj blue and blue adj red\n(red) LALG RALG, D, D, (orange) RALG LALG");                    //(red) LALG RALG, D, D, (orange) RALG LALG                    //(red) LALG: RALG: R', D', R, D, F, D, F', D'                     pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    //(orange) RALG LALG: R, D, R', D', B', D', B, D                     pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.B(-90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.B(90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    /*//RALG, Y, LALG, Y', U, LALG, Y', RALGpieces = rotateBigCube.RALG();pieces = rotateBigCube.fullRotation(0, 90, 0);pieces = rotateBigCube.LALG();pieces = rotateBigCube.fullRotation(0, -90, 0);pieces = rotateBigCube.U(0, 90, 0);pieces = rotateBigCube.LALG();pieces = rotateBigCube.fullRotation(0, -90, 0);pieces = rotateBigCube.RALG();*/                                                                                                                                                                                                                                                                                                                                                                                                                                       }
             }
             else if (objectIndex[0] == 2 && objectIndex[2] == 0)//OB //verified
             {
@@ -439,9 +427,9 @@ public class SolveSecondLayer : MonoBehaviour
                 }
                 else if (OB_O.transform.position.z < OB_B.transform.position.z)
                 {
-                    Debug.Log("The OB piece is in the correct spot but incorrectly positioned\nLALG, Y', RALG, Y, U, U, LALG, Y', RALG"); //correct
-                    //(blue) LALG RALG, D', D', (blue) LALG RALG
-
+                    Debug.Log("The OB piece is in the correct spot but incorrectly positioned\n(blue) LALG RALG, D', D', (blue) LALG RALG"); //correct                    //(blue) LALG RALG, D', D', (blue) LALG RALG                    //(blue) LALG RALG: B', D', B, D, R, D, R', D'                     pieces = rotateBigCube.B(-90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.B(90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);                    //(blue) LALG RALG: B', D', B, D, R, D, R', D'                     pieces = rotateBigCube.B(-90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.B(90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);
 
                     /*//LALG, Y', RALG, Y, U, U, LALG, Y', RALG
                     pieces = rotateBigCube.LALG();
