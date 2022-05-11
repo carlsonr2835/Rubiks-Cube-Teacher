@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SolveSecondLayer.cs">
     <Files>
       <File FileName="Assets/Scripts/solveCube.cs" Line="951" Column="108" />
-      <File FileName="Assets/Scripts/SolveSecondLayer.cs" Line="1756" Column="45" />
+      <File FileName="Assets/Scripts/SolveSecondLayer.cs" Line="1694" Column="85" />
       <File FileName="Assets/Scripts/SolveThird.cs" />
       <File FileName="Assets/Scripts/UIInputWindow.cs" />
       <File FileName="Assets/Scripts/RotateBigCube.cs" />
@@ -23,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="34723a16-bae9-465d-8e75-b0408c826ee0" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7c5f758e-0edb-4165-b949-a4e1585ce600" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
