@@ -190,6 +190,7 @@ public class SolveSecondLayer : MonoBehaviour
         List<int> objectIndex = new List<int>();
         //RB piece 
         objectIndex = searching(RB, pieces);                //ALL RB TRACKING APPEARS TO BE CORRECT. SOME OF THE MOVEMENTS, HOWEVER, ARE CAUSING CORNERS SOME ISSUES
+        Debug.Log("B: " + RB_B.transform.position.y + "\nO: " + RB_R.transform.position.y);
         //on center layer
         //
         // RB
@@ -307,6 +308,7 @@ public class SolveSecondLayer : MonoBehaviour
         //
         //OB
         objectIndex = searching(OB, pieces);
+        Debug.Log("B: " + OB_B.transform.localPosition.y + "\nO: " + OB_O.transform.localPosition.y);
         //on center layer
         if (objectIndex[1] == 1)
         {            /* RB
@@ -383,7 +385,6 @@ public class SolveSecondLayer : MonoBehaviour
             }
             else if (objectIndex[2] == 0) //YO
             {
-                Debug.Log("B: " + OB_B.transform.position.y + "\nO: " + OB_O.transform.position.y);
                 if (OB_B.transform.position.y > OB_O.transform.position.y)
                 {
                     Debug.Log("The OB piece is in the top YO spot with orange facing up\nD', D', (blue) LALG RALG");                    //D', D', (blue) LALG RALG                    /*pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    //(blue) LALG RALG: B', D', B, D, R, D, R', D'                     pieces = rotateBigCube.B(-90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.B(90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);*/
@@ -473,6 +474,7 @@ public class SolveSecondLayer : MonoBehaviour
         //
         //PIECE: OG set up for orange
         objectIndex = searching(OG, pieces);
+        Debug.Log("G: " + OG_G.transform.position.y + "\nO: " + OG_O.transform.position.y);
         //on center layer
         if (objectIndex[1] == 1)
         {            /*
@@ -517,6 +519,8 @@ public class SolveSecondLayer : MonoBehaviour
                 if (OG_O.transform.position.y < OG_G.transform.position.y)
                 {
                     Debug.Log("The OG piece is positioned in the top at YB with orange facing up");
+                    //D', (green) RALG
+
                     /*//Y', U', RALG, Y, LALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.U(0, -90, 0);
@@ -527,6 +531,8 @@ public class SolveSecondLayer : MonoBehaviour
                 else
                 {
                     Debug.Log("The OG piece is positioned in the top at YB with green facing up");
+                    //(orange) LALG
+
                     /*//LALG, Y', RALG
                     pieces = rotateBigCube.LALG();
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
@@ -538,6 +544,8 @@ public class SolveSecondLayer : MonoBehaviour
                 if (OG_O.transform.position.y < OG_G.transform.position.y)
                 {
                     Debug.Log("The OG piece is positioned in the top at YO with orange facing up");
+                    //D, D, (green) RALG
+
                     /*//Y', U, U, RALG, Y, LALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.U(0, 90, 0);
@@ -549,6 +557,8 @@ public class SolveSecondLayer : MonoBehaviour
                 else
                 {
                     Debug.Log("The OG piece is positioned in the top at YO with green facing up");
+                    //D', (orange) LALG
+
                     /*//U', LALG, Y', RALG
                     pieces = rotateBigCube.U(0, -90, 0);
                     pieces = rotateBigCube.LALG();
@@ -561,6 +571,8 @@ public class SolveSecondLayer : MonoBehaviour
                 if (OG_O.transform.position.y < OG_G.transform.position.y)
                 {
                     Debug.Log("The OG piece is positioned in the top at YG with orange facing up");
+                    //D, (green) RALG
+
                     /*//Y', U, RALG, Y, LALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.U(0, 90, 0);
@@ -571,6 +583,8 @@ public class SolveSecondLayer : MonoBehaviour
                 else
                 {
                     Debug.Log("The OG piece is positioned in the top at YG with green facing up");
+                    //D, D, (orange) LALG
+
                     /*//U', U', LALG, Y', RALG
                     pieces = rotateBigCube.U(0, -90, 0);
                     pieces = rotateBigCube.U(0, -90, 0);
@@ -584,6 +598,8 @@ public class SolveSecondLayer : MonoBehaviour
                 if (OG_O.transform.position.y < OG_G.transform.position.y) 
                 {
                     Debug.Log("The OG piece is positioned in the top at YR with orange facing up");
+                    //(green) RALG
+
                     /*//Y', RALG, Y, LALG
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
                     pieces = rotateBigCube.RALG();
@@ -594,6 +610,8 @@ public class SolveSecondLayer : MonoBehaviour
                 else
                 {
                     Debug.Log("The OG piece is positioned in the top at YR with green facing up");
+                    //D, (orange) LALG
+
                     /*//U, LALG, Y', RALG
                     pieces = rotateBigCube.U(0, 90, 0);
                     pieces = rotateBigCube.LALG();
@@ -615,6 +633,7 @@ public class SolveSecondLayer : MonoBehaviour
         //
         //PIECE: RG set up for red
         objectIndex = searching(RG, pieces);
+        Debug.Log("G: " + RG_G.transform.position.y + "\nR: " + RG_R.transform.position.y);
         //on center layer
         if (objectIndex[1] == 1)
         {            /*
@@ -701,37 +720,32 @@ public class SolveSecondLayer : MonoBehaviour
             {
                 if (RG_G.transform.position.y < RG_R.transform.position.y)
                 {
-                    Debug.Log("The RG piece is in the top YB place with green facing up\nLALG, Y', RALG");
-                    /*//LALG, Y', RALG
+                    Debug.Log("The RG piece is in the top YB place with green facing up\nLALG, Y', RALG");                    //(red) RALG                    /*//(red) RALG LALG: L, D, L', D', F', D', F, D                     pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);*/                    /*//LALG, Y', RALG
                     pieces = rotateBigCube.LALG();
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
-                }
+                    pieces = rotateBigCube.RALG();*/                }
                 else
                 {
-                    Debug.Log("The RG piece is in the top YB place with red facing up\nY, U, LALG, Y', RALG");
-                    /*//Y, U, LALG, Y', RALG
+                    Debug.Log("The RG piece is in the top YB place with red facing up\nY, U, LALG, Y', RALG");                    //D, (green) LALG                    /*pieces = rotateBigCube.D(0, -90, 0);                    //(green) LALG RALG: F', D', F, D, L, D, L', D'                     pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);*/                    /*//Y, U, LALG, Y', RALG
                     pieces = rotateBigCube.fullRotation(0, 90, 0);
                     pieces = rotateBigCube.U(0, 90, 0);
                     pieces = rotateBigCube.LALG();
                     pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
-                }
+                    pieces = rotateBigCube.RALG();*/                }
             }
             else if (objectIndex[2] == 0) //YO
             {
                 if (RG_G.transform.position.y < RG_R.transform.position.y)
                 {
-                    Debug.Log("The RG piece is in the top YO place with green facing up\nU', RALG, Y, LALG");
-                    /*//U', RALG, Y, LALG
+                    Debug.Log("The RG piece is in the top YO place with green facing up\nU', RALG, Y, LALG");                    //D', (red) RALG                    /*pieces = rotateBigCube.D(0, 90, 0);                    //(red) RALG LALG: L, D, L', D', F', D', F, D                     pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);*/                    /*//U', RALG, Y, LALG
                     pieces = rotateBigCube.U(0, -90, 0);
                     pieces = rotateBigCube.RALG();
                     pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();*/
-                }
+                    pieces = rotateBigCube.LALG();*/                }
                 else
                 {
-                    Debug.Log("The RG piece is in the top YO place with red facing up\nY, LALG, Y', RALG");
+                    Debug.Log("The RG piece is in the top YO place with red facing up\nY, LALG, Y', RALG");                    //(green) LALG                    /*//(green) LALG RALG: F', D', F, D, L, D, L', D'                     pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);*/
+
                     /*//Y, LALG, Y', RALG
                     pieces = rotateBigCube.fullRotation(0, 90, 0);
                     pieces = rotateBigCube.LALG();
@@ -743,7 +757,8 @@ public class SolveSecondLayer : MonoBehaviour
             {
                 if (RG_G.transform.position.y < RG_R.transform.position.y) //checked
                 {
-                    Debug.Log("The RG piece is in the top YG place with green facing up\nU, U, RALG, Y, LALG");
+                    Debug.Log("The RG piece is in the top YG place with green facing up\nU, U, RALG, Y, LALG");                    //D', D', (red) RALG                    /*pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    //(red) RALG LALG: L, D, L', D', F', D', F, D                     pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);*/
+
                     /*//U, U, RALG, Y, LALG
                     pieces = rotateBigCube.U(0, 90, 0);
                     pieces = rotateBigCube.U(0, 90, 0);
@@ -754,6 +769,9 @@ public class SolveSecondLayer : MonoBehaviour
                 else
                 {
                     Debug.Log("The RG piece is in the top YG place with red facing up\nY, U', LALG, Y', RALG");
+                    //D', (green) LALG
+                    /*pieces = rotateBigCube.D(0, 90, 0);                    //(green) LALG RALG: F', D', F, D, L, D, L', D'                     pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);*/
+
                     /*//Y, U', LALG, Y', RALG
                     pieces = rotateBigCube.fullRotation(0, 90, 0);
                     pieces = rotateBigCube.U(0, -90, 0);
@@ -767,15 +785,16 @@ public class SolveSecondLayer : MonoBehaviour
                 if (RG_G.transform.position.y < RG_R.transform.position.y)
                 {
                     Debug.Log("The RG piece is in the top YR place with green facing up\nU, RALG, Y, LALG");
-                    /*//U, RALG, Y, LALG
+                    //D, (red) RALG
+                    /*pieces = rotateBigCube.D(0, -90, 0);                    //(blue) RALG LALG: F, D, F', D', R', D', R, D                      pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, 90);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.R(0, 0, -90);                    pieces = rotateBigCube.D(0, -90, 0);*/                    /*//U, RALG, Y, LALG
                     pieces = rotateBigCube.U(0, 90, 0);
                     pieces = rotateBigCube.RALG();
                     pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();*/
-                }
+                    pieces = rotateBigCube.LALG();*/                }
                 else
                 {
-                    Debug.Log("The RG piece is in the top YR place with red facing up\nY, U', U', LALG, Y', RALG");
+                    Debug.Log("The RG piece is in the top YR place with red facing up\nY, U', U', LALG, Y', RALG");                    //D, D, (green) LALG                    /*pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    //(green) LALG RALG: F', D', F, D, L, D, L', D'                     pieces = rotateBigCube.F(90, 0, 0);                    pieces = rotateBigCube.D(0, 90, 0);                    pieces = rotateBigCube.F(-90, 0, 0);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, 90);                    pieces = rotateBigCube.D(0, -90, 0);                    pieces = rotateBigCube.L(0, 0, -90);                    pieces = rotateBigCube.D(0, 90, 0);*/
+
                     /*//Y, U', U', LALG, Y', RALG
                     pieces = rotateBigCube.fullRotation(0, 90, 0);
                     pieces = rotateBigCube.U(0, -90, 0);
