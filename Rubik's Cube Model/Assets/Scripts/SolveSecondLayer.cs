@@ -189,8 +189,8 @@ public class SolveSecondLayer : MonoBehaviour
 
         List<int> objectIndex = new List<int>();
         //RB piece 
-        objectIndex = searching(RB, pieces);                //ALL RB TRACKING APPEARS TO BE CORRECT. SOME OF THE MOVEMENTS, HOWEVER, ARE CAUSING CORNERS SOME ISSUES
-        Debug.Log("B: " + RB_B.transform.position.y + "\nO: " + RB_R.transform.position.y);
+        objectIndex = searching(RB, pieces);//ALL RB TRACKING APPEARS TO BE CORRECT. SOME OF THE MOVEMENTS, HOWEVER, ARE CAUSING CORNERS SOME ISSUES
+        Debug.Log("B: " + RB_B.transform.position.y + "\nR: " + RB_R.transform.position.y);
         //on center layer
         //
         // RB
@@ -308,7 +308,7 @@ public class SolveSecondLayer : MonoBehaviour
         //
         //OB
         objectIndex = searching(OB, pieces);
-        Debug.Log("B: " + OB_B.transform.localPosition.y + "\nO: " + OB_O.transform.localPosition.y);
+        Debug.Log("OB: " + OB.transform.rotation);
         //on center layer
         if (objectIndex[1] == 1)
         {            /* RB

@@ -516,6 +516,7 @@ public class RotateBigCube : MonoBehaviour
         pieces[2][0][1].transform.parent = pieces[2][1][1].transform;
         pieces[2][0][2].transform.parent = pieces[2][1][1].transform;
         pieces[2][1][1].transform.Rotate(x, y, z, Space.World);
+        //pieces[2][1][1].transform.DetachChildren();
         pieces[2][2][0].transform.parent = Cube.transform;
         pieces[2][2][1].transform.parent = Cube.transform;
         pieces[2][2][2].transform.parent = Cube.transform;
