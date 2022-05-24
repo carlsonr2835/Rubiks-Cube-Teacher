@@ -434,107 +434,135 @@ public class SolveSecondLayer : MonoBehaviour
         {
             if (objectIndex[0] == 2) //YB
             {
-                if (OG_O.transform.position.y < OG_G.transform.position.y)
+                if (OG.transform.rotation.y < 0) //tracking and movement confirmed
                 {
-                    Debug.Log("The OG piece is positioned in the top at YB with orange facing up");
+                    Debug.Log("The OG piece is positioned in the top at YB with orange facing up\nD', (green) RALG\nD', (green) RALG"); //(0.7, -0.7, 0.0, 0.0)
                     //D', (green) RALG
-
-                    /*//Y', U', RALG, Y, LALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();*/
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    //(green) RALG LALG: B, D, B', D', L', D', L, D
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
                 }
                 else
                 {
-                    Debug.Log("The OG piece is positioned in the top at YB with green facing up");
+                    Debug.Log("The OG piece is positioned in the top at YB with green facing up\n(orange) LALG"); //(0.5, 0.5, -0.5, 0.5)
                     //(orange) LALG
-
-                    /*//LALG, Y', RALG
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
+                    //(orange) LALG RALG: L', D', L, D, B, D, B', D'
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                 }
             }
-            else if (objectIndex[2] == 0) //YO
+            else if (objectIndex[2] == 0) //YO //tracking and movement confirmed)
             {
-                if (OG_O.transform.position.y < OG_G.transform.position.y)
+                if (OG.transform.rotation.y < 0)
                 {
-                    Debug.Log("The OG piece is positioned in the top at YO with orange facing up");
+                    Debug.Log("The OG piece is positioned in the top at YO with orange facing up\nD, D, (green) RALG"); //(0.5, -0.5, 0.5, -0.5)
                     //D, D, (green) RALG
-
-                    /*//Y', U, U, RALG, Y, LALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();*/
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    //(green) RALG LALG: B, D, B', D', L', D', L, D
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
                 }
                 else
                 {
-                    Debug.Log("The OG piece is positioned in the top at YO with green facing up");
+                    Debug.Log("The OG piece is positioned in the top at YO with green facing up\nD', (orange) LALG"); //(0.7, 0.0, 0.0, 0.7)
                     //D', (orange) LALG
-
-                    /*//U', LALG, Y', RALG
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    //(orange) LALG RALG: L', D', L, D, B, D, B', D'
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                 }
             }
-            else if (objectIndex[0] == 0) //YG
+            else if (objectIndex[0] == 0) //YG //tracking and movement confirmed
             {
-                if (OG_O.transform.position.y < OG_G.transform.position.y)
+                if (OG.transform.rotation.x == 0)
                 {
-                    Debug.Log("The OG piece is positioned in the top at YG with orange facing up");
+                    Debug.Log("The OG piece is positioned in the top at YG with orange facing up\nD, (green) RALG"); //(0.0, 0.0, -0.7, 0.7)
                     //D, (green) RALG
-
-                    /*//Y', U, RALG, Y, LALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();*/
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    //(green) RALG LALG: B, D, B', D', L', D', L, D
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
                 }
                 else
                 {
-                    Debug.Log("The OG piece is positioned in the top at YG with green facing up");
+                    Debug.Log("The OG piece is positioned in the top at YG with green facing up\nD, D, (orange) LALG"); //(0.5, -0.5, 0.5, 0.5)
                     //D, D, (orange) LALG
-
-                    /*//U', U', LALG, Y', RALG
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.U(0, -90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    //(orange) LALG RALG: L', D', L, D, B, D, B', D'
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                 }
             }
-            else if (objectIndex[2] == 2) //YR
+            else if (objectIndex[2] == 2) //YR //tracking and movement confirmed
             {
-                if (OG_O.transform.position.y < OG_G.transform.position.y) 
+                if (OG.transform.rotation.x != 0)
                 {
-                    Debug.Log("The OG piece is positioned in the top at YR with orange facing up");
+                    Debug.Log("The OG piece is positioned in the top at YR with orange facing up\n(green) RALG"); //(0.5, -0.5, -0.5, 0.5)
                     //(green) RALG
-
-                    /*//Y', RALG, Y, LALG
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();
-                    pieces = rotateBigCube.fullRotation(0, 90, 0);
-                    pieces = rotateBigCube.LALG();*/
+                    //(green) RALG LALG: B, D, B', D', L', D', L, D
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
 
                 }
                 else
                 {
-                    Debug.Log("The OG piece is positioned in the top at YR with green facing up");
+                    Debug.Log("The OG piece is positioned in the top at YR with green facing up\nD, (orange) LALG"); //(0.0, -0.7, 0.7, 0.0)
                     //D, (orange) LALG
-
-                    /*//U, LALG, Y', RALG
-                    pieces = rotateBigCube.U(0, 90, 0);
-                    pieces = rotateBigCube.LALG();
-                    pieces = rotateBigCube.fullRotation(0, -90, 0);
-                    pieces = rotateBigCube.RALG();*/
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    //(orange) LALG RALG: L', D', L, D, B, D, B', D'
+                    pieces = rotateBigCube.L(0, 0, -90);
+                    pieces = rotateBigCube.D(0, 90, 0);
+                    pieces = rotateBigCube.L(0, 0, 90);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(90, 0, 0);
+                    pieces = rotateBigCube.D(0, -90, 0);
+                    pieces = rotateBigCube.B(-90, 0, 0);
+                    pieces = rotateBigCube.D(0, 90, 0);
                 }
             }
         }

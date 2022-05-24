@@ -189,7 +189,7 @@ public class SolveThird : MonoBehaviour
         }
         //YR piece
         objectIndex = searching(YR, pieces);
-        if (YR_Y.transform.position.y > YR_R.transform.position.y)
+        if (YR_Y.transform.position.y < YR_R.transform.position.y)
         {
             if (objectIndex[0] == 0)
             {
@@ -213,7 +213,7 @@ public class SolveThird : MonoBehaviour
             }
         }
         objectIndex = searching(YO, pieces);
-        if (YO_Y.transform.position.y > YO_O.transform.position.y)
+        if (YO_Y.transform.position.y < YO_O.transform.position.y)
         {
             if (objectIndex[0] == 0)
             {
@@ -237,7 +237,7 @@ public class SolveThird : MonoBehaviour
             }
         }
         objectIndex = searching(YB, pieces);
-        if (YB_Y.transform.position.y > YB_B.transform.position.y)
+        if (YB_Y.transform.position.y < YB_B.transform.position.y)
         {
             if (objectIndex[0] == 0)
             {
@@ -261,7 +261,7 @@ public class SolveThird : MonoBehaviour
             }
         }
         objectIndex = searching(YG, pieces);
-        if (YG_Y.transform.position.y > YG_G.transform.position.y)
+        if (YG_Y.transform.position.y < YG_G.transform.position.y)
         {
             if (objectIndex[0] == 0)
             {
@@ -284,44 +284,40 @@ public class SolveThird : MonoBehaviour
                 crossPosition[1][2] = true;
             }
         }
-        if (crossPosition[0][1] && crossPosition[2][1] && crossPosition[1][0] && crossPosition[1][2]) //all right
+        if (crossPosition[0][1] && crossPosition[2][1] && crossPosition[1][0] && crossPosition[1][2]) //solved
         {
-            Debug.Log("The third layer cross is already solved");
+            Debug.Log("The third layer cross is already solved"); //tracking confirmed, movement not needed
         }
         else if (crossPosition[0][1] && crossPosition[2][1] && !crossPosition[1][0] && !crossPosition[1][2]) //horz line
         {
-            Debug.Log("The third layer cross is oriented in the line formation (horizontal)"); //being accessed wrong times
-            //F, RALG, F'
-        }
+            Debug.Log("The third layer cross is oriented in the line formation (horizontal)\nF, (red) RALG, F'"); //tracking and movement confirmed            //F, (red) RALG, F'            //F            pieces = rotateBigCube.F(-90, 0, 0);            //(red) RALG: L, D, L', D'            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.D(0, -90, 0);            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.D(0, 90, 0);            //F'            pieces = rotateBigCube.F(90, 0, 0);        }
         else if (crossPosition[1][0] && crossPosition[1][2] && !crossPosition[0][1] && !crossPosition[2][1]) //vert line
         {
-            Debug.Log("The third layer cross is oriented in the line formation (vertical)");
-            //Y, Y, F, RALG, F'
+            Debug.Log("The third layer cross is oriented in the line formation (vertical)\nD, F, (red) RALG, F'"); //movement and tracking confirmed            //D, F, (red) RALG, F'            //D            pieces = rotateBigCube.D(0, -90, 0);            //F            pieces = rotateBigCube.F(-90, 0, 0);            //(red) RALG: L, D, L', D'            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.D(0, -90, 0);            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.D(0, 90, 0);            //F'            pieces = rotateBigCube.F(90, 0, 0);
         }
-        else if (crossPosition[1][2] && crossPosition[2][1]) //correct angle .-
+        else if (crossPosition[1][0] && crossPosition[2][1] && !crossPosition[0][1] && !crossPosition[1][2]) 
         {
             Debug.Log("The third layer cross is oriented in the angle formation (correct .-)"); //working so far
-            //f, RALG, f'
+            //f, (red) RALG, f'
         }
-        else if (crossPosition[1][2] && crossPosition[0][1]) //angle -.
+        else if (crossPosition[1][0] && crossPosition[0][1] && !crossPosition[2][1] && !crossPosition[1][2]) //angle -.
         {
             Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -.)");
-            //Y', f, RALG, f'
+            //D', f, (red) RALG, f'
         }
-        else if (crossPosition[0][1] && crossPosition[1][0]) //angle -^
+        else if (crossPosition[0][1] && crossPosition[1][2] && !crossPosition[2][1] && !crossPosition[1][0]) //angle -^
         {
-            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -^)");
-            //Y', Y', f, RALG, f'
+            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect -^)"); 
+            //D, D, f, (red) RALG, f'
         }
-        else if (crossPosition[0][1] && crossPosition[2][1]) //angle ^-
+        else if (crossPosition[1][2] && crossPosition[2][1] && !crossPosition[1][0] && !crossPosition[0][1]) //angle ^-
         {
-            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect ^-)"); //not being accessed in right time
-            //Y, f, RALG, f'
+            Debug.Log("The third layer cross is oriented in the angle formation (Incorrect ^-)"); 
+            //D, f, (red) RALG, f'
         }
         else if (!crossPosition[0][1] && !crossPosition[2][1] && !crossPosition[1][0] && !crossPosition[1][2]) //dot
         {
-            Debug.Log("The third layer cross is oriented in the dot formation");
-            //F, RALG, F', f, RALG, f'
+            Debug.Log("The third layer cross is oriented in the dot formation\nF, (red) RALG, F', f, (red) RALG, f'"); //tracking and movement confirmed            //F, (red) RALG, F', f, (red) RALG, f'            //F, (red) RALG, F'            //F            pieces = rotateBigCube.F(-90, 0, 0);            //(red) RALG: L, D, L', D'            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.D(0, -90, 0);            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.D(0, 90, 0);            //F'            pieces = rotateBigCube.F(90, 0, 0);            //f, (red) RALG, f'            //f            pieces = rotateBigCube.f(true);            //(red) RALG: L, D, L', D'            pieces = rotateBigCube.L(0, 0, 90);            pieces = rotateBigCube.D(0, -90, 0);            pieces = rotateBigCube.L(0, 0, -90);            pieces = rotateBigCube.D(0, 90, 0);            //F'            pieces = rotateBigCube.f(false);
         }
         else //error
         {
