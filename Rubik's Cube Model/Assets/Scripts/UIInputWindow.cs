@@ -247,11 +247,10 @@ public class UIInputWindow : MonoBehaviour
         }
         else if (input == "solve" || input == "Solve" || input == "SOLVE")
         {
-            //pieces = solveC.centerPieces(pieces);
             pieces = solveC.whiteCross(pieces);
             pieces = solveC.whiteCorners(pieces);
             pieces = solveSecondLayer.secondLayer(pieces);
-            pieces = solveThird.yellowCross(pieces);
+            if (solveThird.yellowCross(pieces))            {                pieces = solveThird.positionCorners(pieces);            }
         }
         else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")
         {
