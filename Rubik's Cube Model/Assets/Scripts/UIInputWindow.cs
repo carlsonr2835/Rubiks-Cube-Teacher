@@ -260,6 +260,7 @@ public class UIInputWindow : MonoBehaviour
         else if (input == "lalg" || input == "LALG") {            pieces = rotateBigCube.LALG();        }
         else if (input == "ralglalg" || input == "RALGLALG" || input == "ralg lalg" || input == "RALG LALG")        {            pieces = rotateBigCube.RALG();            pieces = rotateBigCube.fullRotation(0, 90, 0);            pieces = rotateBigCube.LALG();        }
         else if (input == "lalgralg" || input == "LALGRALG" || input == "lalg ralg" || input == "LALG RALG")        {            pieces = rotateBigCube.LALG();            pieces = rotateBigCube.fullRotation(0, -90, 0);            pieces = rotateBigCube.RALG();        }
+        else if (input == "c1")        {            pieces = rotateBigCube.C1();        }
         else
         {
             Debug.Log("Not a valid move");
