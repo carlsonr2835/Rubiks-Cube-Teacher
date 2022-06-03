@@ -250,7 +250,7 @@ public class UIInputWindow : MonoBehaviour
             pieces = solveC.whiteCross(pieces);
             pieces = solveC.whiteCorners(pieces);
             pieces = solveSecondLayer.secondLayer(pieces);
-            if (solveThird.yellowCross(pieces))            {                pieces = solveThird.positionCorners(pieces);            }
+            if (solveThird.yellowCross(pieces))            {                pieces = solveThird.positionCorners(pieces);                pieces = solveThird.orientCorners(pieces);                //pieces = solveThird.positionEdges(pieces); //functional but left out for now            }
         }
         else if (input == "Scramble" || input == "scramble" || input == "SCRAMBLE")
         {
@@ -261,6 +261,14 @@ public class UIInputWindow : MonoBehaviour
         else if (input == "ralglalg" || input == "RALGLALG" || input == "ralg lalg" || input == "RALG LALG")        {            pieces = rotateBigCube.RALG();            pieces = rotateBigCube.fullRotation(0, 90, 0);            pieces = rotateBigCube.LALG();        }
         else if (input == "lalgralg" || input == "LALGRALG" || input == "lalg ralg" || input == "LALG RALG")        {            pieces = rotateBigCube.LALG();            pieces = rotateBigCube.fullRotation(0, -90, 0);            pieces = rotateBigCube.RALG();        }
         else if (input == "c1")        {            pieces = rotateBigCube.C1();        }
+        else if (input == "RR")        {            pieces = rotateBigCube.RedShuffleR();        }
+        else if (input == "RL")        {            pieces = rotateBigCube.RedShuffleL();        }
+        else if (input == "BR")        {            pieces = rotateBigCube.BlueShuffleR();        }
+        else if (input == "BL")        {            pieces = rotateBigCube.BlueShuffleL();        }
+        else if (input == "GR")        {            pieces = rotateBigCube.GreenShuffleR();        }
+        else if (input == "GL")        {            pieces = rotateBigCube.GreenShuffleL();        }
+        else if (input == "OR")        {            pieces = rotateBigCube.OrangeShuffleR();        }
+        else if (input == "OL")        {            pieces = rotateBigCube.OrangeShuffleL();        }
         else
         {
             Debug.Log("Not a valid move");
