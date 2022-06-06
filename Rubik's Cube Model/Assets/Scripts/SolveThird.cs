@@ -330,89 +330,89 @@ public class SolveThird : MonoBehaviour
     {
         //YRB //tracking and movement confirmed
         Debug.Log("YRB: " + YRB.transform.rotation);
-        if ((int) (YRB.transform.rotation.w * 10) == 10) //correct
+        if ((int)(YRB.transform.rotation.w * 10) == 10 || (int)(YRB.transform.rotation.w * 10) == -10) //correct //0, 0, 0, 1
         {
             Debug.Log("The YRB corner is oriented correctly"); //tracking and movement confirmed
         }
-        else if ((int)(YRB.transform.rotation.w * 10) == 5) //4
+        else if (((int)(YRB.transform.rotation.w * 10) == 5 && (int)(YRB.transform.rotation.z * 10) == -5) || ((int)(YRB.transform.rotation.w * 10) == -5 && (int)(YRB.transform.rotation.z * 10) == 5)) //4
         {
-            Debug.Log("The YRB corner is oriented with yellow in front\nRALG x4"); //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
+            Debug.Log("The YRB corner is oriented with yellow in front\nRALG x4"); //tracking and movement confirmed // -5, -5, -5, +5
             pieces = rotateBigCube.RALG();
             pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
-        else if ((int)(YRB.transform.rotation.w * 10) == -5)//2
+        else if ((int)(YRB.transform.rotation.w * 10) == -5 || (int)(YRB.transform.rotation.w * 10) == 5)//2
         {
-            Debug.Log("The YRB corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            Debug.Log("The YRB corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed //5, 5, 5, 5, and opposite
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
         //YOB
         //D'
         pieces = rotateBigCube.D(0, 90, 0);
         Debug.Log("YOB: " + YOB.transform.rotation);
-        if ((int)(YOB.transform.rotation.y * 10) == 7) //correct //tracking an movement confirmed
+        if ((int)(YOB.transform.rotation.z * 10) == 0) //correct //tracking an movement confirmed
         {
-            Debug.Log("The YOB corner is oriented correctly"); //0, 7, 0, 7
+            Debug.Log("The YOB corner is oriented correctly"); //0, 7, 0, 7 or the sevens are negative. Have seen both //accessed incorrectly for side w/ neg 7s
         }
-        else if ((int) (YOB.transform.rotation.y * 10) == 0) //4
+        else if ((int)(YOB.transform.rotation.y * 10) == 0) //4
         {
-            Debug.Log("The YOB corner is oriented with yellow in front\nRALG x4"); //(0, 0, -.7, .7 //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
+            Debug.Log("The YOB corner is oriented with yellow in front\nRALG x4"); //(0, 0, -.7, .7, also 7s opposite //tracking and movement confirmed
             pieces = rotateBigCube.RALG();
             pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
         else if ((int)(YOB.transform.rotation.w * 10) == 0)//2
         {
-            Debug.Log("The YOB corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            Debug.Log("The YOB corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed //0, -7, -7, 0 or vice versa
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
         //YOG
         //D'
         pieces = rotateBigCube.D(0, 90, 0);
         Debug.Log("YOG: " + YOG.transform.rotation);
-        if ((int) (YOG.transform.rotation.w * 10) == 0) //correct
+        if ((int)(YOG.transform.rotation.w * 10) == 0) //correct //0, 1, 0, 0
         {
             Debug.Log("The YOG corner is oriented correctly"); //tracking and movement confirmed
         }
-        else if ((int)(YOG.transform.rotation.y * 10) == -5) //4
+        else if (((int)(YOG.transform.rotation.y * 10) == -5 && (int)(YOG.transform.rotation.x * 10) == -5) || ((int)(YOG.transform.rotation.y * 10) == 5 && (int)(YOG.transform.rotation.x * 10) == 5)) //4
         {
             Debug.Log("The YOG corner is oriented with yellow in front\nRALG x4"); //-5. -5. 5. -5 //PROBLEMS
-            /*pieces = rotateBigCube.RALG();
             pieces = rotateBigCube.RALG();
             pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
-        else if ((int)(YOG.transform.rotation.y * 10) == 5)//2
+        else if (((int)(YOG.transform.rotation.y * 10) == -5 && (int)(YOG.transform.rotation.x * 10) == 5) || ((int)(YOG.transform.rotation.y * 10) == 5 && (int)(YOG.transform.rotation.x * 10) == -5))//2
         {
-            Debug.Log("The YOG corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            Debug.Log("The YOG corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed //-5, 5, 5, -5
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
         //YRG
         //D'
         pieces = rotateBigCube.D(0, 90, 0);
         Debug.Log("YRG: " + YRG.transform.rotation);
-        if ((int) (YRG.transform.rotation.w * 10) == -7) //correct
+        if ((int)(YRG.transform.rotation.x * 10) == 0) //correct
         {
-            Debug.Log("The YRG corner is oriented correctly"); //tracking and movement confirmed
+            Debug.Log("The YRG corner is oriented correctly"); //tracking and movement confirmed //0, 7, 0, -7
         }
         else if ((int)(YRG.transform.rotation.w * 10) == 0) //4
         {
-            Debug.Log("The YRG corner is oriented with yellow in front\nRALG x4"); //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
+            Debug.Log("The YRG corner is oriented with yellow in front\nRALG x4"); //tracking and movement confirmed //7, 7, 0, 0 or vise versa
             pieces = rotateBigCube.RALG();
             pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
-        else if ((int)(YRG.transform.rotation.w * 10) == 7) //2
+        else if ((int)(YRG.transform.rotation.y * 10) == 0) //2
         {
-            Debug.Log("The YRG corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed
-            /*pieces = rotateBigCube.RALG();
-            pieces = rotateBigCube.RALG();*/
+            Debug.Log("The YRG corner is oriented with yellow on the side\nRALG x2"); //tracking and movement confirmed //7, 0, 0, 7
+            pieces = rotateBigCube.RALG();
+            pieces = rotateBigCube.RALG();
         }
         //D'
         pieces = rotateBigCube.D(0, 90, 0);
