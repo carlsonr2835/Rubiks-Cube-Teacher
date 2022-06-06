@@ -1,0 +1,18 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/carlsonry/Documents/GitHub/Rubiks-Cube-Teacher/Rubik's Cube Model
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+62170
+Successfully changed project path to: /Users/carlsonry/Documents/GitHub/Rubiks-Cube-Teacher/Rubik's Cube Model
+/Users/carlsonry/Documents/GitHub/Rubiks-Cube-Teacher/Rubik's Cube Model
+Using Asset Import Pipeline V2.
